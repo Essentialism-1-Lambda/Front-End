@@ -6,7 +6,6 @@
 
 ---
 
-- [Table Of Contents](#h1-id%22table-of-contents-51%22table-of-contentsh1)
 - [Proposal](#proposal)
 - [Target Audience](#target-audience)
 - [Features](#features)
