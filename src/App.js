@@ -7,11 +7,11 @@ function App() {
 	return (
 		<div className='App'>
       <nav>
-        <a href="#">Profile</a>
-        <a href="#">About</a>
-        <a href="#">Login</a>
+        <a href='#'>Profile</a>
+        <a href='#'>About</a>
+        <a href='#'>Login</a>
       </nav>
-      <header className="App-header">
+      <header className='App-header'>
         <h1>Welcome to Essentialism. <br></br> Get more things done with less.</h1> 
         <Link to={'/register'}
           className='register-link'
