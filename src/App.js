@@ -12,7 +12,7 @@ function App() {
         <a href='#'>Login</a>
       </nav>
       <header className='App-header'>
-        <h1>Welcome to Essentialism. <br></br> Get more things done with less.</h1> 
+        <h1>Live Happier with Essentialism.</h1> 
         <Link to={'/register'}
           className='register-link'
         >
