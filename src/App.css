@@ -2,7 +2,7 @@
 	text-align: center;
 }
 
-nav {
+.nav {
   position: relative;
   margin-right: 79%;
   width: 100%;
@@ -58,12 +58,13 @@ h1 {
 .intake-header {
   font-family: 'Montserrat';
   font-size: 2rem;
-  margin-right: 12%; 
+  margin-right: 15%; 
+  margin-top: 10%;
 }
 
 button {
-  width: 280px;
-  padding: 8px 11px;
+  width: 250px;
+  padding: 10px 15px;
   font-size: 1.2rem;
   text-transform: uppercase;
   border: 0;
@@ -77,16 +78,41 @@ button {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   margin-right: 10%;
 }
+
+.button-login {
+  width: 225px;
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  outline: none;
+  background-color: #555856;
+  background-image: linear-gradient(to right, #555857, #1c1d1b);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
   
 .error {
   color: rgb(22, 19, 19);
 }
 
+.register-body {
+  background-color: #e4ebeb;
+  height: 155vh;
+}
+
+.login-body {
+  background-color: #e4ebeb;
+  height: 100vh;
+}
+
 form {
   display: flex;
   flex-direction: column;
-  width: 90%;
-  max-width: 300px;
+  max-width: 250px;
   margin: 0 auto;
 }
   
@@ -136,7 +162,7 @@ input:placeholder {
 .valuesCheckbox {
   padding-top: 12%;
   font-size: 1.5rem;
-  margin-right: 7%;
+  margin-right: 17%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -147,7 +173,7 @@ input:placeholder {
 }
 
 input#family {
-  margin-left: 1%;
-  padding-top: 10%;
+  margin-left: -11%;
+  padding-top: 20%;
 }
   

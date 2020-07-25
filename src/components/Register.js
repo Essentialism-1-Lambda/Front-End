@@ -12,7 +12,11 @@ const formSchema = yup.object().shape({
   financial: yup.string(),
   health: yup.string(),
   community: yup.string(),
-  about: yup.string()
+  creativity: yup.string(),
+  positivity: yup.string(),
+  efficiency: yup.string(),
+  loyalty: yup.string(),
+  spirituality: yup.string(),
 });
 
 const Register = () => {
@@ -130,17 +134,19 @@ const Register = () => {
   };
 
   return (
+    <div className='register-body'>
     <form onSubmit={formSubmit}>
             <p  className='intake-header'>
-                Let's get started! 
+                Welcome to Essentialism.
+                Let's get you started! 
             </p>
             <div className='form-style'>
                 <label htmlFor='name' className='nameText'>
-                  Name
                 <input 
                     type='text' 
                     name='name' 
                     id='name'
+                    placeholder='Name'
                     value={formState.name}
                     onChange={inputChange} 
                 />
@@ -149,21 +155,21 @@ const Register = () => {
                 <p className='error'>{errorState.name}</p>
                 ) : null}
                  <label htmlFor='email' className='emailText'>
-                  Email
                 <input 
                     type='text' 
                     name='email' 
                     id='email' 
+                    placeholder='Email'
                     value={formState.email}
                     onChange={inputChange} 
                 />
                 </label>
                 <label htmlFor='password' className='passwordText'>
-                  Password
                 <input 
                     type='text' 
                     name='password' 
                     id='password' 
+                    placeholder='Password'
                     value={formState.password}
                     onChange={inputChange} 
                 />
@@ -272,8 +278,9 @@ const Register = () => {
               </p>
             </div>
             <pre>{JSON.stringify(post, null, 2)}</pre> 
-            <button disabled={buttonDisabled}>Submit</button> 
+            <button disabled={buttonDisabled}>Sign Up</button> 
         </form>
+      </div>
   )
 }
 
