@@ -9,16 +9,10 @@ function App() {
 	return (
 		<div className='App'>
       <Switch>
-        <Route path='/register'>
-          <Register />
-        </Route>
-        <Route path='/userlogin'>
-          <UserLogin />
-        </Route>
-        <Route exact path='/' component={Home}>
-          <Home />
-        </Route>
-      </Switch> 
+        <Route path='/register' component={Register} />
+        <Route path='/login'component={UserLogin} />
+        <Route exact path='/' component={Home} />
+      </Switch>
 		</div>
 	);
 }
