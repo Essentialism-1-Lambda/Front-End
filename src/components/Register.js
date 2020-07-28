@@ -78,7 +78,7 @@ const Register = () => {
     console.log('form submitted!');
 
     axios
-      .post('https://reqres.in/api/users', formState)
+      .post('https://essentialism-bw.herokuapp.com/api/register', formState)
       .then(response => {
         console.log(response)
         setPost(response.data);
@@ -126,7 +126,7 @@ const Register = () => {
                 </label>
                 <label htmlFor='password' className='passwordText'>
                 <input
-                    type='text'
+                    type='password'
                     name='password'
                     id='password'
                     placeholder='Password'
