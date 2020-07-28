@@ -166,7 +166,7 @@ const Register = () => {
                 </label>
                 <label htmlFor='password' className='passwordText'>
                 <input 
-                    type='text' 
+                    type='password' 
                     name='password' 
                     id='password' 
                     placeholder='Password'
