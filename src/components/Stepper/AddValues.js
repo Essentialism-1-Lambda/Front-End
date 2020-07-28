@@ -1,13 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export const ValueForm = (props) => {
-	const [firstValues, setFirstValues] = useState(props.userValues);
-
-	const handleChange = (input) => (event) =>
-		setFirstValues({
-			...firstValues,
-			[input]: event.target.value,
-		});
+	const {userValues, handleValueChange} = props;
 
 	return (
 		<form>
@@ -18,8 +12,8 @@ export const ValueForm = (props) => {
 						type='checkbox'
 						id='family'
 						name='family'
-						checked={firstValues.family}
-						onChange={handleChange}
+						checked={userValues.family}
+						onChange={handleValueChange}
 					/>
 				</label>
 				<label htmlFor='environmental'>
@@ -28,8 +22,8 @@ export const ValueForm = (props) => {
 						type='checkbox'
 						id='environmental'
 						name='environmental'
-						checked={firstValues.environmental}
-						onChange={handleChange}
+						checked={userValues.environmental}
+						onChange={handleValueChange}
 					/>
 				</label>
 				<label htmlFor='financial'>
@@ -37,8 +31,8 @@ export const ValueForm = (props) => {
 						type='checkbox'
 						id='financial'
 						name='financial'
-						checked={firstValues.financial}
-						onChange={handleChange}
+						checked={userValues.financial}
+						onChange={handleValueChange}
 					/>
 					Financial
 				</label>
@@ -47,8 +41,8 @@ export const ValueForm = (props) => {
 						type='checkbox'
 						id='health'
 						name='health'
-						checked={firstValues.health}
-						onChange={handleChange}
+						checked={userValues.health}
+						onChange={handleValueChange}
 					/>
 					Health and Wellness
 				</label>
@@ -57,8 +51,8 @@ export const ValueForm = (props) => {
 						type='checkbox'
 						id='community'
 						name='community'
-						checked={firstValues.community}
-						onChange={handleChange}
+						checked={userValues.community}
+						onChange={handleValueChange}
 					/>
 					Community
 				</label>
@@ -67,8 +61,8 @@ export const ValueForm = (props) => {
 						type='checkbox'
 						id='creativity'
 						name='creativity'
-						checked={firstValues.creativity}
-						onChange={handleChange}
+						checked={userValues.creativity}
+						onChange={handleValueChange}
 					/>
 					Creativity
 				</label>
@@ -77,8 +71,8 @@ export const ValueForm = (props) => {
 						type='checkbox'
 						id='positivity'
 						name='positivity'
-						checked={firstValues.positivity}
-						onChange={handleChange}
+						checked={userValues.positivity}
+						onChange={handleValueChange}
 					/>
 					Positivity
 				</label>
@@ -87,8 +81,8 @@ export const ValueForm = (props) => {
 						type='checkbox'
 						id='efficiency'
 						name='efficiency'
-						checked={firstValues.efficiency}
-						onChange={handleChange}
+						checked={userValues.efficiency}
+						onChange={handleValueChange}
 					/>
 					Efficiency
 				</label>
@@ -97,8 +91,8 @@ export const ValueForm = (props) => {
 						type='checkbox'
 						id='loyalty'
 						name='loyalty'
-						checked={firstValues.loyalty}
-						onChange={handleChange}
+						checked={userValues.loyalty}
+						onChange={handleValueChange}
 					/>
 					Loyalty
 				</label>
@@ -107,8 +101,8 @@ export const ValueForm = (props) => {
 						type='checkbox'
 						id='spirituality'
 						name='spirituality'
-						checked={firstValues.spirituality}
-						onChange={handleChange}
+						checked={userValues.spirituality}
+						onChange={handleValueChange}
 					/>
 					Spirituality
 				</label>

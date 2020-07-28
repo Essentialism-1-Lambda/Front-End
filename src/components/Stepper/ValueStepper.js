@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { axiosWithAuth } from '../../utils/AxiosWithAuth';
 import { ValueForm } from './AddValues';
 import { Reflection } from './ReflectValues';
+import {FinalValues} from './FinalForm';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -51,12 +52,21 @@ export default function HorizontalLabelPositionBelowStepper() {
   const [userValues, setUserValues] = useState(initialValues);
   const [reflection, setReflection] = useState('');
 
+  const handleValueChange = (input) => (event) =>
+  setUserValues({
+			...userValues,
+			[input]: event.target.value,
+		});
+
 	const getStepContent = (stepIndex) => {
 		switch (stepIndex) {
 			case 0:
 				return (
 					<>
-						<ValueForm setUserValues={setUserValues} userValues={userValues} />
+            <ValueForm
+            userValues={userValues}
+            handleValueChange={handleValueChange}
+            />
 					</>
 				);
 			case 1:
@@ -69,7 +79,15 @@ export default function HorizontalLabelPositionBelowStepper() {
 					</>
 				);
 			case 2:
-				return 'This is the bit I really care about!';
+				return (
+          <>
+            <FinalValues
+              reflection={reflection}
+              userValues={userValues}
+              handleValueChange={handleValueChange}
+            />
+          </>
+        );
 			default:
 				return 'Unknown stepIndex';
 		}
