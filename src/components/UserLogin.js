@@ -5,7 +5,6 @@ import axios from 'axios';
 
 // validation schema
 const formSchema = yup.object().shape({
-  name: yup.string().required('Name is a required field.').min(2, 'That\'s not a name.'),
   email: yup.string(),
   password: yup.string(),
 });
@@ -13,7 +12,6 @@ const formSchema = yup.object().shape({
 const UserLogin = () => {
   // state to hold data for form inputs
   const [formState, setFormState] = useState({
-    name: '',
     email: '',
     password: ''
   });
@@ -31,7 +29,6 @@ const UserLogin = () => {
 
   // state to hold data for error messages
   const [errorState, setErrorState] = useState({
-    name: '',
     email: '',
     password: ''
   });
@@ -86,7 +83,6 @@ const UserLogin = () => {
       
         // reset form if successful
         setFormState({
-          name: '',
           email: '',
           password: ''
         });
@@ -102,19 +98,6 @@ const UserLogin = () => {
                 Let's get you in! 
             </p>
             <div className='form-style'>
-                <label htmlFor='name' className='nameText'>
-                <input 
-                    type='text' 
-                    name='name' 
-                    id='name'
-                    placeholder='Name'
-                    value={formState.name}
-                    onChange={inputChange} 
-                />
-                </label>
-                {errorState.name.length > 0 ? (
-                <p className='error'>{errorState.name}</p>
-                ) : null}
                  <label htmlFor='email' className='emailText'>
                 <input 
                     type='text' 
@@ -127,7 +110,7 @@ const UserLogin = () => {
                 </label>
                 <label htmlFor='password' className='passwordText'>
                 <input 
-                    type='text' 
+                    type='password' 
                     name='password' 
                     id='password' 
                     placeholder='Password'
