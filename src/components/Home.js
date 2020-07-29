@@ -10,6 +10,9 @@ const Home = () => {
         >
           Login
         </Link>
+        {/* <Link to={'url from audreys marketing page'}>
+          About Us
+        </Link> */}
       </div>
       <header className="App-header">
         <h1>Live Happier with Essentialism.</h1> 
