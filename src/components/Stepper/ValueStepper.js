@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Stepper, Step, StepLabel, Button } from '@material-ui/core/Stepper';
+import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
 import { axiosWithAuth } from '../../utils/AxiosWithAuth';
@@ -43,7 +43,7 @@ function getSteps() {
 	];
 }
 
-export default function HorizontalLabelPositionBelowStepper() {
+export default function ValueStepper() {
 	const classes = useStyles();
 	const [activeStep, setActiveStep] = useState(0);
 	const steps = getSteps();
