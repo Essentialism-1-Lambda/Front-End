@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const formSchema = yup.object().shape({
   project: yup.string().required('Project name is a required field.').min(2, 'That is not a project name.'),
-  details: yup.string().required('Project details are required'),
+  desc: yup.string().required('Project details are required'),
   time: yup.string(),
 });
 
@@ -13,7 +13,7 @@ const Projects = () => {
   
   const [formState, setFormState] = useState({
     project: '',
-    details: '',
+    desc: '',
     time: '',
   });
 
@@ -29,7 +29,7 @@ const Projects = () => {
 
   const [errorState, setErrorState] = useState({
     project: '',
-    details: '',
+    desc: '',
     time: '',
 });
 
@@ -79,7 +79,7 @@ const Projects = () => {
 
         setFormState({
             project: '',
-            details: '',
+            desc: '',
             time: '',
         });
       })
@@ -110,13 +110,13 @@ const Projects = () => {
                         <p className='error'>{errorState.project}</p>
                         ) : null}
 
-                    <label htmlFor='details' className='detailsText'>
+                    <label htmlFor='desc' className='descText'>
                         Describe the project you're working on:
                         <textarea 
-                            name='details' 
-                            id='details' 
+                            name='desc' 
+                            id='desc' 
                             placeholder='Details'
-                            value={formState.details}
+                            value={formState.desc}
                             onChange={inputChange} 
                         />
                     </label>

@@ -11,6 +11,25 @@ import Projects from './Projects.js';
 export default function UserDashboard() {
     const [user, setUser] = useState([]);
 
+    const completeUserStub = {
+        id: 99,
+        name: 'Test User',
+        email: 'test@test.com',
+        values: [1,2,4,5,6,10],
+        projects: [
+          {
+            name: 'Make stubs',
+            desc: 'Make stubs while waiting for the backend',
+            values: [1]
+          }
+        ],
+        topValues: {
+          1: 1,
+          2: 2,
+          3: 6
+        }
+      };
+
     useEffect(() => {
         axiosWithAuth()
           .get("https://essentialism-bw.herokuapp.com/api/projects")
@@ -30,20 +49,20 @@ export default function UserDashboard() {
 
             </div>
             <div className="dashboard-values">
-                <ValueCard />
+                {/* <ValueCard /> */}
             </div>
             <div className="dashboard-projects">
-                <Projects />
+                {/* <Projects /> */}
 
                 {
-                    // user.map(user => ( 
-                    //           <div key={user.id} className='projects'>
-                    //               <p>Project: {user.project}</p>
-                    //               <p>details: {user.details}</p>
-                    //               <p>time: {user.time}</p>
-                    //           </div>
-                    //   )
-                    // )
+                    user.map(user => ( 
+                              <div key={completeUserStub.id} className='projects'>
+                                  <p>Project: {completeUserStub.project}</p>
+                                  <p>desc: {completeUserStub.details}</p>
+                                  <p>time: {completeUserStub.time}</p>
+                              </div>
+                      )
+                    )
                 }
             </div>
 
