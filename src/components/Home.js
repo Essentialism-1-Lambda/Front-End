@@ -10,9 +10,9 @@ const Home = () => {
         >
           Login
         </Link>
-        {/* <Link to={'url from audreys marketing page'}>
+        <Link to={`https://essentialism-1-lambda.github.io/Marketing/`}>
           About Us
-        </Link> */}
+        </Link>
       </div>
       <header className="App-header">
         <h1>Live Happier with Essentialism.</h1> 
