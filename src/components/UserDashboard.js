@@ -13,9 +13,9 @@ export default function UserDashboard() {
 
     useEffect(() => {
         axiosWithAuth()
-          .get("https://water-my-plants-backend-vw.herokuapp.com/user")
+          .get("https://essentialism-bw.herokuapp.com/api/projects")
           .then(res => {
-              console.log('profile effect ', res.data)
+              console.log('dashboard effect ', res.data)
               setUser(res.data)
             }
           )
@@ -26,7 +26,14 @@ export default function UserDashboard() {
     return (
         <div className="dashboard-container">
             <div className="dashboard-welcome">
-                {/* Welcome {user}. View your values and add/edit your projects */}
+                {/* Welcome {user.name}. View your values and add/edit your projects */}
+
+            </div>
+            <div className="dashboard-values">
+                <ValueCard />
+            </div>
+            <div className="dashboard-projects">
+                <Projects />
 
                 {
                     // user.map(user => ( 
@@ -38,13 +45,6 @@ export default function UserDashboard() {
                     //   )
                     // )
                 }
-
-            </div>
-            <div className="dashboard-values">
-                <ValueCard />
-            </div>
-            <div className="dashboard-projects">
-                <Projects />
             </div>
 
         </div>
