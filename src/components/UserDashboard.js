@@ -9,7 +9,7 @@ export default function UserDashboard() {
     return (
         <div className="dashboard-container">
             <div className="dashboard-welcome">
-                {/* Welcome {user}. View your values and add/edit your projects */}
+                {/* Welcome {user}! View your values and add/edit projects! */}
             </div>
             <div className="dashboard-values">
                 <ValueCard />
