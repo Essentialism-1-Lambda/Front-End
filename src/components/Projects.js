@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
 
-// validation schema
+
 const formSchema = yup.object().shape({
   project: yup.string().required('Project name is a required field.').min(2, 'That is not a project name.'),
   details: yup.string().required('Project details are required'),
@@ -10,35 +10,32 @@ const formSchema = yup.object().shape({
 });
 
 const Projects = () => {
-  // state to hold data for form inputs
+  
   const [formState, setFormState] = useState({
     project: '',
     details: '',
     time: '',
   });
 
-  // state for whether the button should be disabled or not.
+
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  // Every time the formState changes, check to see if it passes verification.
-    //If it does, then enable the submit button, otherwise disable.
     useEffect(() => {
       formSchema.isValid(formState).then(valid => {
           setButtonDisabled(!valid);
       });
   }, [formState]);
 
-  // state to hold data for error messages
+
   const [errorState, setErrorState] = useState({
     project: '',
     details: '',
     time: '',
 });
 
-  // state to set the POST request. 
+
   const [post, setPost] = useState([]);
 
-  // validation; validate event against the schema
   const validateChange = (e) => {
     let value =
       e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -61,18 +58,15 @@ const Projects = () => {
     });
   };
 
-  // onChange Function
+
   const inputChange = e => {
     e.persist();
     validateChange(e)
     let value = 
         e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    // console.log("name is: ", e.target.name);
     setFormState({ ...formState, [e.target.name]: value })
 };
 
-  // onSubmit Function
-  // POSTs data to server
   const formSubmit = e => {
     e.preventDefault();
     console.log('Project form submitted!');
@@ -83,7 +77,6 @@ const Projects = () => {
         setPost(response.data);
         // props.history.push("/Projects")
 
-        // reset form if successful
         setFormState({
             project: '',
             details: '',
