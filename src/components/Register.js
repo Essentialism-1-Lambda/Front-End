@@ -4,37 +4,19 @@ import axios from 'axios';
 
 // validation schema
 const formSchema = yup.object().shape({
-  name: yup.string().required('Name is a required field.').min(2, 'That\'s not a name.'),
-  email: yup.string(),
-  password: yup.string(),
-  family: yup.string(),
-  environmental: yup.string(),
-  financial: yup.string(),
-  health: yup.string(),
-  community: yup.string(),
-  creativity: yup.string(),
-  positivity: yup.string(),
-  efficiency: yup.string(),
-  loyalty: yup.string(),
-  spirituality: yup.string(),
+  //Old Schema
+  // name: yup.string().required('Name is a required field.').min(2, 'That\'s not a name.'),
+  email: yup.string().required('An email is required.').email(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
+  password: yup.string().required('A password is required.').min(2, 'Your password must be at least 2 characters.')
 });
 
 const Register = () => {
   // state to hold data for form inputs
   const [formState, setFormState] = useState({
-    name: '',
+    // Old Schema
+    // name: '',
     email: '',
-    password: '',
-    family: '',
-    environmental: '',
-    financial: '',
-    health: '',
-    community: '',
-    creativity: '',
-    positivity: '',
-    efficiency: '',
-    loyalty: '',
-    spirituality: ''
+    password: ''
   });
 
   // state for whether the button should be disabled or not.
@@ -50,23 +32,14 @@ const Register = () => {
 
   // state to hold data for error messages
   const [errorState, setErrorState] = useState({
-    name: '',
+    // Old Schema
+    // name: '',
     email: '',
-    password: '',
-    family: '',
-    environmental: '',
-    financial: '',
-    health: '',
-    community: '',
-    creativity: '',
-    positivity: '',
-    efficiency: '',
-    loyalty: '',
-    spirituality: ''
+    password: ''
 });
 
-  // state to set the POST request. 
-  const [post, setPost] = useState([]);
+  // state to set the POST request.
+  // const [post, setPost] = useState([]);
 
   // validation; validate event against the schema
   const validateChange = (e) => {
@@ -95,7 +68,7 @@ const Register = () => {
   const inputChange = e => {
     e.persist();
     validateChange(e)
-    let value = 
+    let value =
         e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     // console.log("name is: ", e.target.name);
     setFormState({ ...formState, [e.target.name]: value })
@@ -110,24 +83,14 @@ const Register = () => {
     axios
       .post('https://essentialism-bw.herokuapp.com/api/register', formState)
       .then(response => {
-        console.log(response)
-        setPost(response.data);
+        console.log(response);
+        // setPost(response.data);
 
         // reset form if successful
         setFormState({
-          name: '',
+          // name: '',
           email: '',
-          password: '',
-          family: '',
-          environmental: '',
-          financial: '',
-          health: '',
-          community: '',
-          creativity: '',
-          positivity: '',
-          efficiency: '',
-          loyalty: '',
-          spirituality: ''
+          password: ''
         });
       })
       .catch(err => console.log(err.response));
@@ -138,147 +101,45 @@ const Register = () => {
     <form onSubmit={formSubmit}>
             <p  className='intake-header'>
                 Welcome to Essentialism.
-                Let's get you started! 
+                Let's get you started!
             </p>
             <div className='form-style'>
-                <label htmlFor='name' className='nameText'>
-                <input 
-                    type='text' 
-                    name='name' 
+                {/* <label htmlFor='name' className='nameText'>
+                <input
+                    type='text'
+                    name='name'
                     id='name'
                     placeholder='Name'
                     value={formState.name}
-                    onChange={inputChange} 
+                    onChange={inputChange}
                 />
                 </label>
                 {errorState.name.length > 0 ? (
                 <p className='error'>{errorState.name}</p>
-                ) : null}
+                ) : null} */}
                  <label htmlFor='email' className='emailText'>
-                <input 
-                    type='text' 
-                    name='email' 
-                    id='email' 
+                <input
+                    type='email'
+                    name='email'
+                    id='email'
                     placeholder='Email'
                     value={formState.email}
-                    onChange={inputChange} 
+                    onChange={inputChange}
                 />
                 </label>
                 <label htmlFor='password' className='passwordText'>
-                <input 
-                    type='password' 
-                    name='password' 
-                    id='password' 
+                <input
+                    type='password'
+                    name='password'
+                    id='password'
                     placeholder='Password'
                     value={formState.password}
-                    onChange={inputChange} 
-                />
-                </label>
-                <p className='valuesCheckbox'>  Select 5 values that are most important to you.  
-                <label htmlFor='family'>
-                <input
-                    type='checkbox'
-                    id='family'
-                    name='family'
-                    checked={formState.family}
-                    onChange={inputChange}
-                    />
-                    Family
-                </label>
-                <label htmlFor='environmental'>
-                <input
-                    type='checkbox'
-                    id='environmental'
-                    name='environmental'
-                    checked={formState.environmental}
                     onChange={inputChange}
                 />
-                    Environmental
                 </label>
-                <label htmlFor='financial'>
-                <input
-                    type='checkbox'
-                    id='financial'
-                    name='financial'
-                    checked={formState.financial}
-                    onChange={inputChange}
-                />
-                    Financial
-                </label>
-                <label htmlFor='health'>
-                <input
-                    type='checkbox'
-                    id='health'
-                    name='health'
-                    checked={formState.health}
-                    onChange={inputChange}
-                    />
-                    Health and Wellness
-                </label>
-                <label htmlFor='community'>
-                <input
-                    type='checkbox'
-                    id='community'
-                    name='community'
-                    checked={formState.community}
-                    onChange={inputChange}
-                    />
-                    Community
-                </label>
-                <label htmlFor='creativity'>
-                <input
-                    type='checkbox'
-                    id='creativity'
-                    name='creativity'
-                    checked={formState.creativity}
-                    onChange={inputChange}
-                    />
-                    Creativity
-                </label>
-                <label htmlFor='positivity'>
-                <input
-                    type='checkbox'
-                    id='positivity'
-                    name='positivity'
-                    checked={formState.positivity}
-                    onChange={inputChange}
-                    />
-                    Positivity
-                </label>
-                <label htmlFor='efficiency'>
-                <input
-                    type='checkbox'
-                    id='efficiency'
-                    name='efficiency'
-                    checked={formState.efficiency}
-                    onChange={inputChange}
-                    />
-                    Efficiency
-                </label>
-                <label htmlFor='loyalty'>
-                <input
-                    type='checkbox'
-                    id='loyalty'
-                    name='loyalty'
-                    checked={formState.loyalty}
-                    onChange={inputChange}
-                    />
-                    Loyalty
-                </label>
-                <label htmlFor='spirituality'>
-                <input
-                    type='checkbox'
-                    id='spirituality'
-                    name='spirituality'
-                    checked={formState.spirituality}
-                    onChange={inputChange}
-                    />
-                    Spirituality
-                </label>
-              </p>
             </div>
-            <pre>{JSON.stringify(post, null, 2)}</pre> 
-            <button disabled={buttonDisabled}>Sign Up</button> 
+            {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
+            <button disabled={buttonDisabled}>Sign Up</button>
         </form>
       </div>
   )
