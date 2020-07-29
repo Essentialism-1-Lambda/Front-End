@@ -75,13 +75,13 @@ const Projects = () => {
   // POSTs data to server
   const formSubmit = e => {
     e.preventDefault();
-    console.log('form submitted!');
-
+    console.log('Project form submitted!');
     axios
       .post('https://essentialism-bw.herokuapp.com/api/projects', formState)
       .then(response => {
         console.log(response)
         setPost(response.data);
+        // props.history.push("/Projects")
 
         // reset form if successful
         setFormState({
@@ -93,53 +93,57 @@ const Projects = () => {
       .catch(err => console.log(err.response));
   };
 
+
   return (
     <div className='project-body'>
-    <form onSubmit={formSubmit}>
-            <p  className='intake-header'>
-                Start recording your projects! 
-            </p>
-            <div className='form-style'>
-                <label htmlFor='project' className='projectTitle'>
-                <input 
-                    type='text' 
-                    name='project' 
-                    id='project'
-                    placeholder='Project Name'
-                    value={formState.project}
-                    onChange={inputChange} 
-                />
-                </label>
-                {errorState.project.length > 0 ? (
-                <p className='error'>{errorState.project}</p>
-                ) : null}
+        <form onSubmit={formSubmit}>
+                <p  className='intake-header'>
+                    Record your projects. 
+                </p>
 
-                 <label htmlFor='details' className='detailsText'>
-                    Describe the project you're working on:
-                    <textarea 
-                        name='details' 
-                        id='details' 
-                        placeholder='Details'
-                        value={formState.details}
-                        onChange={inputChange} 
-                    />
-                </label>
+                <div className='form-style'>
 
-                <label htmlFor='time' className='timeDropdown'>
-                    <select value={formState.time} onChange={inputChange}>
-                        <option value="thirty">Less than 30 min</option>
-                        <option value="oneHour">Less than 1 hr</option>
-                        <option value="twoHours">less than 2 hrs</option>
-                        <option value="fourHours">More than 4 hrs</option>
-                    </select>
-                </label>
-                      
-              </p>
-            </div>
-            <pre>{JSON.stringify(post, null, 2)}</pre> 
-            <button disabled={buttonDisabled}>Sign Up</button> 
-        </form>
-      </div>
+                    <label htmlFor='project' className='projectTitle'>
+                        <input 
+                            type='text' 
+                            name='project' 
+                            id='project'
+                            placeholder='Project Name'
+                            value={formState.project}
+                            onChange={inputChange} 
+                        />
+                    </label>
+                        {errorState.project.length > 0 ? (
+                        <p className='error'>{errorState.project}</p>
+                        ) : null}
+
+                    <label htmlFor='details' className='detailsText'>
+                        Describe the project you're working on:
+                        <textarea 
+                            name='details' 
+                            id='details' 
+                            placeholder='Details'
+                            value={formState.details}
+                            onChange={inputChange} 
+                        />
+                    </label>
+
+                    <label htmlFor='time' className='timeDropdown'>
+                        <select value={formState.time} onChange={inputChange}>
+                            <option value="thirty">Less than 30 min</option>
+                            <option value="oneHour">Less than 1 hr</option>
+                            <option value="twoHours">less than 2 hrs</option>
+                            <option value="fourHours">More than 4 hrs</option>
+                        </select>
+                    </label>
+                </div>
+
+                <pre>{JSON.stringify(post, null, 2)}</pre>
+                
+                <button disabled={buttonDisabled}>Sign Up</button>
+
+            </form>
+    </div>
   )
 }
 
