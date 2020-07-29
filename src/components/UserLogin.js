@@ -4,15 +4,19 @@ import axios from 'axios';
 
 // validation schema
 const formSchema = yup.object().shape({
-	email: yup.string().email(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
-	password: yup.string().required()
+	email: yup
+		.string()
+		.email(
+			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+		),
+	password: yup.string().required(),
 });
 
 const UserLogin = () => {
 	// state to hold data for form inputs
 	const [formState, setFormState] = useState({
 		email: '',
-		password: '',
+		password: ''
 	});
 
 	// state for whether the button should be disabled or not.
@@ -29,11 +33,11 @@ const UserLogin = () => {
 	// state to hold data for error messages
 	const [errorState, setErrorState] = useState({
 		email: '',
-		password: '',
+		password: ''
 	});
 
 	// state to set the POST request.
-	const [post, setPost] = useState([]);
+	// const [post, setPost] = useState([]);
 
 	// validation; validate event against the schema
 	const validateChange = (e) => {
@@ -73,17 +77,18 @@ const UserLogin = () => {
 	const formSubmit = (e) => {
 		e.preventDefault();
 		console.log('form submitted!');
+		console.log(formState);
 
 		axios
 			.post('https://essentialism-bw.herokuapp.com/api/login', formState)
 			.then((response) => {
 				console.log(response);
-				setPost(response.data);
+				// setPost(response.data);
 
 				// reset form if successful
 				setFormState({
 					email: '',
-					password: '',
+					password: ''
 				});
 			})
 			.catch((err) => console.log(err.response));
@@ -96,7 +101,7 @@ const UserLogin = () => {
 				<div className='form-style'>
 					<label htmlFor='email' className='emailText'>
 						<input
-							type='text'
+							type='email'
 							name='email'
 							id='email'
 							placeholder='Email'
@@ -115,7 +120,7 @@ const UserLogin = () => {
 						/>
 					</label>
 				</div>
-				<pre>{JSON.stringify(post, null, 2)}</pre>
+				{/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
 				<button className='button-login' disabled={buttonDisabled}>
 					Log In
 				</button>

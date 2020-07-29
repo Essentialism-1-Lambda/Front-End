@@ -4,7 +4,8 @@ import axios from 'axios';
 
 // validation schema
 const formSchema = yup.object().shape({
-  name: yup.string().required('Name is a required field.').min(2, 'That\'s not a name.'),
+  //Old Schema
+  // name: yup.string().required('Name is a required field.').min(2, 'That\'s not a name.'),
   email: yup.string().required('An email is required.').email(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
   password: yup.string().required('A password is required.').min(2, 'Your password must be at least 2 characters.')
 });
@@ -12,7 +13,8 @@ const formSchema = yup.object().shape({
 const Register = () => {
   // state to hold data for form inputs
   const [formState, setFormState] = useState({
-    name: '',
+    // Old Schema
+    // name: '',
     email: '',
     password: ''
   });
@@ -30,13 +32,14 @@ const Register = () => {
 
   // state to hold data for error messages
   const [errorState, setErrorState] = useState({
-    name: '',
+    // Old Schema
+    // name: '',
     email: '',
     password: ''
 });
 
   // state to set the POST request.
-  const [post, setPost] = useState([]);
+  // const [post, setPost] = useState([]);
 
   // validation; validate event against the schema
   const validateChange = (e) => {
@@ -80,12 +83,12 @@ const Register = () => {
     axios
       .post('https://essentialism-bw.herokuapp.com/api/register', formState)
       .then(response => {
-        console.log(response)
-        setPost(response.data);
+        console.log(response);
+        // setPost(response.data);
 
         // reset form if successful
         setFormState({
-          name: '',
+          // name: '',
           email: '',
           password: ''
         });
@@ -101,7 +104,7 @@ const Register = () => {
                 Let's get you started!
             </p>
             <div className='form-style'>
-                <label htmlFor='name' className='nameText'>
+                {/* <label htmlFor='name' className='nameText'>
                 <input
                     type='text'
                     name='name'
@@ -113,10 +116,10 @@ const Register = () => {
                 </label>
                 {errorState.name.length > 0 ? (
                 <p className='error'>{errorState.name}</p>
-                ) : null}
+                ) : null} */}
                  <label htmlFor='email' className='emailText'>
                 <input
-                    type='text'
+                    type='email'
                     name='email'
                     id='email'
                     placeholder='Email'
@@ -135,7 +138,7 @@ const Register = () => {
                 />
                 </label>
             </div>
-            <pre>{JSON.stringify(post, null, 2)}</pre>
+            {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
             <button disabled={buttonDisabled}>Sign Up</button>
         </form>
       </div>
