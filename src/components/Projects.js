@@ -4,17 +4,42 @@ import axios from 'axios';
 
 
 const formSchema = yup.object().shape({
-  project: yup.string().required('Project name is a required field.').min(2, 'That is not a project name.'),
-  desc: yup.string().required('Project details are required'),
+//   project: yup.string().required('Project name is a required field.').min(2, 'That is not a project name.'),
+//   desc: yup.string().required('Project details are required'),
+  name: yup.string(),
+  desc: yup.string(),
   time: yup.string(),
+  values: yup.string(),
 });
 
 const Projects = () => {
+
+    const userData = {
+        id: 99,
+        name: 'Test User',
+        email: 'test@test.com',
+        values: [1,2,4,5,6,10],
+        projects: [
+          {
+            name: 'Make stubs',
+            desc: 'Make stubs while waiting for the backend',
+            time: '',
+            values: [1]
+          }
+        ],
+        topValues: {
+          1: 1,
+          2: 2,
+          3: 6
+        }
+      };
+
   
   const [formState, setFormState] = useState({
-    project: '',
+    name: '',
     desc: '',
     time: '',
+    values: '',
   });
 
 
@@ -28,17 +53,18 @@ const Projects = () => {
 
 
   const [errorState, setErrorState] = useState({
-    project: '',
+    name: '',
     desc: '',
     time: '',
+    values: '',
 });
 
 
   const [post, setPost] = useState([]);
 
   const validateChange = (e) => {
-    let value =
-      e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    
     yup
       .reach(formSchema, e.target.name)
       .validate(value)
@@ -78,9 +104,10 @@ const Projects = () => {
         // props.history.push("/Projects")
 
         setFormState({
-            project: '',
+            name: '',
             desc: '',
             time: '',
+            values: '',
         });
       })
       .catch(err => console.log(err.response));
@@ -96,11 +123,11 @@ const Projects = () => {
 
                 <div className='form-style'>
 
-                    <label htmlFor='project' className='projectTitle'>
+                    <label htmlFor='name' className='projectName'>
                         <input 
                             type='text' 
-                            name='project' 
-                            id='project'
+                            name='name' 
+                            id='name'
                             placeholder='Project Name'
                             value={formState.project}
                             onChange={inputChange} 
@@ -115,7 +142,7 @@ const Projects = () => {
                         <textarea 
                             name='desc' 
                             id='desc' 
-                            placeholder='Details'
+                            placeholder='Describe'
                             value={formState.desc}
                             onChange={inputChange} 
                         />
@@ -133,7 +160,7 @@ const Projects = () => {
 
                 <pre>{JSON.stringify(post, null, 2)}</pre>
                 
-                <button disabled={buttonDisabled}>Sign Up</button>
+                <button disabled={buttonDisabled}>Add Project</button>
 
             </form>
     </div>

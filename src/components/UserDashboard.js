@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../Unit3-React-Folder/utils/axiosWithAuth';
 
-import ValueCard from './ValueCard';
-import Projects from './Projects.js';
+// import ValueCard from './ValueCard';
+// import Projects from './Projects.js';
 
-// api will be used to pull and render user information, or we can store it into a usercontext
-// will be a private route, along with onboarding
+    // api will be used to pull and render user information, or we can store it into a usercontext
+    // will be a private route, along with onboarding
 
 export default function UserDashboard() {
     const [user, setUser] = useState([]);
@@ -20,6 +20,7 @@ export default function UserDashboard() {
           {
             name: 'Make stubs',
             desc: 'Make stubs while waiting for the backend',
+            time: '',
             values: [1]
           }
         ],
@@ -54,16 +55,17 @@ export default function UserDashboard() {
             <div className="dashboard-projects">
                 {/* <Projects /> */}
 
-                {
+                {/* {
                     user.map(user => ( 
-                              <div key={completeUserStub.id} className='projects'>
-                                  <p>Project: {completeUserStub.project}</p>
-                                  <p>desc: {completeUserStub.details}</p>
-                                  <p>time: {completeUserStub.time}</p>
+                              <div key={completeUserStub.projects.id} className='projects'>
+                                  <p>Project: {completeUserStub.projects.name}</p>
+                                  <p>desc: {completeUserStub.projects.desc}</p>
+                                  <p>time: {completeUserStub.projects.time}</p>
+                                  <p>values: {completeUserStub.projects.values}</p>
                               </div>
                       )
                     )
-                }
+                } */}
             </div>
 
         </div>
