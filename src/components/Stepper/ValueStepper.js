@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
-import { axiosWithAuth } from '../../utils/AxiosWithAuth';
+// import { axiosWithAuth } from '../../utils/AxiosWithAuth';
 import { ValueForm } from './AddValues';
 import { Reflection } from './ReflectValues';
 import {FinalValues} from './FinalForm';
-import {UserContext} from '../../Context/UserContext';
+import {UserConsumer} from '../../Context/UserContext';
+import {ValueConsumer} from '../../Context/ValueContext';
+
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -23,51 +26,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-//Value stub in place until anendpoint is built
-const valuesStub = [
-  {
-    id: 1,
-    name: 'family',
-  },
-  {
-    id: 2,
-    name: 'environmental',
-  },
-  {
-    id: 3,
-    name: 'financial',
-  },
-  {
-    id: 4,
-    name: 'health',
-  },
-  {
-    id: 5,
-    name: 'community',
-  },
-  {
-    id: 6,
-    name: 'creativity',
-  },
-  {
-    id: 7,
-    name:  'positivity',
-  },
-  {
-    id: 8,
-    name: 'efficiency',
-  },
-  {
-    id: 9,
-    name: 'loyalty',
-  },
-  {
-    id: 10,
-    name: 'spirituality'
-  }
-];
-
-
 function getSteps() {
 	return [
 		'Select your Values',
@@ -81,17 +39,11 @@ export default function ValueStepper() {
 	const classes = useStyles();
 	const [activeStep, setActiveStep] = useState(0);
 	const steps = getSteps();
-	const id = useParams();
+	// const id = useParams();
 	const history = useHistory();
-  const [userValues, setUserValues] = useState(valuesStub);
+	const {user} = useContext(UserConsumer);
 	const [reflection, setReflection] = useState('');
-	// const [values, setValues]
-
-  const handleValueChange = (input) => (event) =>
-  setUserValues({
-			...userValues,
-			[input]: event.target.value,
-		});
+	const {values, handleValueChange, setUser} = useContext(ValueConsumer);
 
 	const getStepContent = (stepIndex) => {
 		switch (stepIndex) {
@@ -99,7 +51,8 @@ export default function ValueStepper() {
 				return (
 					<>
             <ValueForm
-            userValues={userValues}
+						values={values}
+            userValues={user.values}
             handleValueChange={handleValueChange}
             />
 					</>
@@ -118,7 +71,8 @@ export default function ValueStepper() {
           <>
             <FinalValues
               reflection={reflection}
-              userValues={userValues}
+							userValues={user.values}
+							topValues={user.topValues}
               handleValueChange={handleValueChange}
             />
           </>
@@ -144,18 +98,26 @@ export default function ValueStepper() {
   setReflection({
 			...reflection,
 			[input]: event.target.value,
-		});
+		}
+);
 
 
-	const handleSubmit = async () => {
-		axiosWithAuth()
-			.post(`${id}/values`, userValues)
-			.then((res) => {
-				console.log({ userValuesResponse: res.data });
-				history.push(`/dashboard`);
-			})
-			.catch((err) => console.log({ userValues: err }));
-	};
+	// const handleSubmit = async () => {
+		// axiosWithAuth()
+		// 	.post(`${id}/values`, user.values)
+		// 	.then((res) => {
+		// 		console.log({ userValuesResponse: res.data });
+		// 		history.push(`/dashboard`);
+		// 	})
+		// 	.catch((err) => console.log({ userValues: err }));
+		const handleSubmit = async (input) => {
+			return (event) => setUser({
+				...user.values,
+				[input]: event.target.value,
+			},
+				history.push('/dashboard')
+			);
+		};
 
 	return (
 		<div className={classes.root}>

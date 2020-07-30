@@ -11,23 +11,24 @@ import Header from './components/Nav/Header';
 import UserDashboard from './components/UserDashboard';
 
 import { UserProvider } from './Context/UserContext';
+import {ValueProvider} from './Context/ValueContext';
+import {registerStub, valuesStub} from './DataStubs/data';
 
 function App() {
-	// const token = localStorage.getItem('token');
-	const registerStub = {
-		id: 99,
-		name: 'Test User',
-		email: 'test@test.com',
-		values: [1, 2, 3],
-		projects: [],
-		topValues: {},
-	};
+  // const token = localStorage.getItem('token');
 	//const [isAuth, setAuth] = useState(token !== '' ? token : null);
 	const [isAuth, setAuth] = useState(
 		registerStub !== null ? registerStub : null
 	);
 	//const [user, setUser] = useState(getUserFromToken(token));
-	const [user, setUser] = useState(registerStub);
+  const [user, setUser] = useState(registerStub);
+  const [values, setValues] = useState(valuesStub);
+
+  const handleValueChange = (input) => (event) =>
+  setValues({
+			...user.values,
+			[input]: event.target.value,
+		});
 
 	return (
 		<div className='App'>
@@ -35,7 +36,9 @@ function App() {
 				<UserProvider value={{ user, isAuth, setAuth }}>
 					<Header setUser={setUser}  />
 					<PrivateRoute path='/dashboard' component={UserDashboard} />
+        <ValueProvider value={{values, handleValueChange}} >
 					<PrivateRoute path='/onboarding' componenet={ValueStepper} />
+        </ValueProvider>
 					<Route path='/register' component={Register} />
 					<Route path='/login' component={UserLogin} />
 					<Route exact path='/' component={Home} />

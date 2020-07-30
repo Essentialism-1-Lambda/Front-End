@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import {Button} from '@material-ui/core';
-import { UserConsumer } from '../../Context/UserContext';
+import { UserContext } from '../../Context/UserContext';
 
 export const Header = () => {
   const history = useHistory();
-	const {isAuth} = useContext(UserConsumer);
+	const {isAuth} = useContext(UserContext);
 
   const logout = (e) => {
     e.preventDefault();
@@ -26,7 +26,10 @@ export const Header = () => {
               <Link className="userlogin-link" to={"/onboarding"}>
                 Change Values
               </Link>
-              <Button type='submit' onClick={logout}>
+              <a className="userlogin-link" href="https:/essentialism-1-lambda.github.io/Marketing/">
+              About Us
+              </a>
+              <Button type='submit' className="userlogin-link" onClick={logout}>
                 Log Out
             </Button>
             </div>

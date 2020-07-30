@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import {axiosWithAuth} from '../utils/AxiosWithAuth';
-import {useHistory} from 'react-router-dom';
 
 // validation schema
 const formSchema = yup.object().shape({
