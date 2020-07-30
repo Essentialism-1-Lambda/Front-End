@@ -13,7 +13,7 @@ import UserDashboard from './components/UserDashboard';
 import { UserContext } from './Context/UserContext';
 
 function App() {
-	const token = localStorage.getItem('token');
+	// const token = localStorage.getItem('token');
 	const registerStub = {
 		id: 99,
 		name: 'Test User',
@@ -31,28 +31,16 @@ function App() {
 
 	return (
 		<div className='App'>
-			<UserContext.Provider value={user}>
-				<Header isAuth={isAuth} setAuth={setAuth} setUser={setUser} />
-				<Switch>
-					<UserContext.Consumer>
-						<PrivateRoute
-							path='/dashboard'
-							isAuth={isAuth}
-							component={(user) => <UserDashboard user={user} />}
-						/>
-					</UserContext.Consumer>
-					<UserContext.Consumer>
-						<PrivateRoute
-							path='/onboarding'
-							isAuth={isAuth}
-							componenet={(user) => <ValueStepper user={user} />}
-						/>
-					</UserContext.Consumer>
+			<Switch>
+				<UserContext.Provider value={{ user, isAuth }}>
+					<Header setAuth={setAuth} setUser={setUser} />
+					<PrivateRoute path='/dashboard' component={UserDashboard} />
+					<PrivateRoute path='/onboarding' componenet={ValueStepper} />
 					<Route path='/register' component={Register} />
 					<Route path='/login' component={UserLogin} />
 					<Route exact path='/' component={Home} />
-				</Switch>
-			</UserContext.Provider>
+				</UserContext.Provider>
+			</Switch>
 		</div>
 	);
 }
