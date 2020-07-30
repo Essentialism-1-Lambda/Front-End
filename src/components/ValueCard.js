@@ -33,6 +33,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const initialValues = {
+	family: '',
+	environmental: '',
+	financial: '',
+	health: '',
+	community: '',
+	creativity: '',
+	positivity: '',
+	efficiency: '',
+	loyalty: '',
+	spirituality: '',
+};
+
 export default function ValueCard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);

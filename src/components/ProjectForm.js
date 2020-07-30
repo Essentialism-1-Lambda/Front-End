@@ -1,40 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
-import axios from 'axios';
+import { axiosWithAuth } from '../../utils/AxiosWithAuth';
 
 
 const formSchema = yup.object().shape({
-//   project: yup.string().required('Project name is a required field.').min(2, 'That is not a project name.'),
-//   desc: yup.string().required('Project details are required'),
-  name: yup.string(),
-  desc: yup.string(),
-  time: yup.string(),
-  values: yup.string(),
-});
+    //   project: yup.string().required('Project name is a required field.').min(2, 'That is not a project name.'),
+    //   desc: yup.string().required('Project details are required'),
+    name: yup.string(),
+    desc: yup.string(),
+    time: yup.string(),
+    values: yup.string(),
+  });
 
 const Projects = () => {
-
-    // const userData = {
-    //     id: 99,
-    //     name: 'Test User',
-    //     email: 'test@test.com',
-    //     values: [1,2,4,5,6,10],
-    //     projects: [
-    //       {
-    //         name: 'Make stubs',
-    //         desc: 'Make stubs while waiting for the backend',
-    //         time: '',
-    //         values: [1]
-    //       }
-    //     ],
-    //     topValues: {
-    //       1: 1,
-    //       2: 2,
-    //       3: 6
-    //     }
-    //   };
-
-  
   const [formState, setFormState] = useState({
     name: '',
     desc: '',
@@ -42,25 +20,20 @@ const Projects = () => {
     values: '',
   });
 
-
   const [buttonDisabled, setButtonDisabled] = useState(true);
-
-    useEffect(() => {
-      formSchema.isValid(formState).then(valid => {
-          setButtonDisabled(!valid);
-      });
-  }, [formState]);
-
+  const [post, setPost] = useState([]);
 
   const [errorState, setErrorState] = useState({
     name: '',
     desc: '',
     time: '',
     values: '',
-});
+  });
 
-
-  const [post, setPost] = useState([]);
+  useEffect(() => {
+    formSchema.isValid(formState).then(valid => {
+        setButtonDisabled(!valid);
+    }), [formState]});
 
   const validateChange = (e) => {
     let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -84,24 +57,24 @@ const Projects = () => {
     });
   };
 
-
   const inputChange = e => {
     e.persist();
     validateChange(e)
     let value = 
         e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    setFormState({ ...formState, [e.target.name]: value })
-};
+    setFormState({ ...formState, [e.target.name]: value });
+  };
 
-  const formSubmit = e => {
+
+  const formSubmit = async () => {
     e.preventDefault();
     console.log('Project form submitted!');
-    axios
-      .post(`https://essentialism-bw.herokuapp.com/api/users/${users.id}/project/${project.id}`, formState)
+    axiosWithAuth()
+      .post(`https://essentialism-bw.herokuapp.com/api/users/${id}/projects/${project.id}`, formState)
       .then(response => {
         console.log(response)
         setPost(response.data);
-        // props.history.push("/Projects")
+        history.push("/Projects")
 
         setFormState({
             name: '',
@@ -111,7 +84,7 @@ const Projects = () => {
         });
       })
       .catch(err => console.log(err.response));
-  };
+  
   
   return (
     <div className='project-body'>
