@@ -22,18 +22,50 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const initialValues = {
-	family: '',
-	environmental: '',
-	financial: '',
-	health: '',
-	community: '',
-	creativity: '',
-	positivity: '',
-	efficiency: '',
-	loyalty: '',
-	spirituality: '',
-};
+//Value stub in place until anendpoint is built
+const valuesStub = [
+  {
+    id: 1,
+    name: 'family',
+  },
+  {
+    id: 2,
+    name: 'environmental',
+  },
+  {
+    id: 3,
+    name: 'financial',
+  },
+  {
+    id: 4,
+    name: 'health',
+  },
+  {
+    id: 5,
+    name: 'community',
+  },
+  {
+    id: 6,
+    name: 'creativity',
+  },
+  {
+    id: 7,
+    name:  'positivity',
+  },
+  {
+    id: 8,
+    name: 'efficiency',
+  },
+  {
+    id: 9,
+    name: 'loyalty',
+  },
+  {
+    id: 10,
+    name: 'spirituality'
+  }
+];
+
 
 function getSteps() {
 	return [
@@ -44,13 +76,15 @@ function getSteps() {
 }
 
 export default function ValueStepper() {
+
 	const classes = useStyles();
 	const [activeStep, setActiveStep] = useState(0);
 	const steps = getSteps();
 	const id = useParams();
 	const history = useHistory();
-  const [userValues, setUserValues] = useState(initialValues);
-  const [reflection, setReflection] = useState('');
+  const [userValues, setUserValues] = useState(valuesStub);
+	const [reflection, setReflection] = useState('');
+	// const [values, setValues]
 
   const handleValueChange = (input) => (event) =>
   setUserValues({

@@ -1,19 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 const Home = () => {
   return (
     <div className='home'>
-      <div className='nav'>
+      {/* {/* <div className='nav'>
         <Link to={'/login'}
           className='userlogin-link'
         >
           Login
         </Link>
-        <a href={`https://essentialism-1-lambda.github.io/Marketing/`}>
+        <Link to={`https://essentialism-1-lambda.github.io/Marketing/`}>
           About Us
-        </a>
-      </div>
+        </Link>
+      </div> */}
       <header className="App-header">
         <h1>Live Happier with Essentialism.</h1>
         <Link to={'/register'}

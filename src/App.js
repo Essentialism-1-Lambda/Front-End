@@ -7,6 +7,8 @@ import UserLogin from './components/UserLogin';
 import getUserFromToken from './utils/GetUserFromToken';
 import PrivateRoute from './utils/PrivateRoute';
 import ValueStepper from './components/Stepper/ValueStepper';
+import Header from './components/Nav/Header';
+import UserDashboard from './components/UserDashboard';
 
 function App() {
 
@@ -16,8 +18,9 @@ function App() {
 
 	return (
 		<div className='App'>
+      <Header isAuth={isAuth} setAuth={setAuth} setUser={setUser} />
       <Switch>
-        {/* <PrivateRoute path='/dashboard' component={UserDashboard} /> */}
+        <PrivateRoute path='/dashboard' component={UserDashboard} />
         <PrivateRoute path='/values' componenet={ValueStepper} />
         <Route path='/register' component={Register} />
         <Route path='/login' component={UserLogin} />
