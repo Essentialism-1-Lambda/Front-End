@@ -8,6 +8,7 @@ import { axiosWithAuth } from '../../utils/AxiosWithAuth';
 import { ValueForm } from './AddValues';
 import { Reflection } from './ReflectValues';
 import {FinalValues} from './FinalForm';
+import {UserContext} from '../../Context/UserContext';
 
 const useStyles = makeStyles((theme) => ({
 	root: {

@@ -19,10 +19,10 @@ export const Header = (props) => {
         <>
           <section className='private-nav'>
             <div className='links'>
-              <Link className="userlogin-link" href="/dashboard">
+              <Link className="userlogin-link" to={"/dashboard"}>
                 Dashboard
               </Link>
-              <Link className="userlogin-link" href="/onboarding">
+              <Link className="userlogin-link" to={"/onboarding"}>
                 Change Values
               </Link>
               <Button type='submit' onClick={logout}>
