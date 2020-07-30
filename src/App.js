@@ -10,7 +10,7 @@ import ValueStepper from './components/Stepper/ValueStepper';
 import Header from './components/Nav/Header';
 import UserDashboard from './components/UserDashboard';
 
-import { UserContext } from './Context/UserContext';
+import { UserProvider } from './Context/UserContext';
 
 function App() {
 	// const token = localStorage.getItem('token');
@@ -32,14 +32,14 @@ function App() {
 	return (
 		<div className='App'>
 			<Switch>
-				<UserContext.Provider value={{ user, isAuth }}>
-					<Header setAuth={setAuth} setUser={setUser} />
+				<UserProvider value={{ user, isAuth, setAuth }}>
+					<Header setUser={setUser}  />
 					<PrivateRoute path='/dashboard' component={UserDashboard} />
 					<PrivateRoute path='/onboarding' componenet={ValueStepper} />
 					<Route path='/register' component={Register} />
 					<Route path='/login' component={UserLogin} />
 					<Route exact path='/' component={Home} />
-				</UserContext.Provider>
+				</UserProvider>
 			</Switch>
 		</div>
 	);

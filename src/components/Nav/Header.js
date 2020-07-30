@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import {Button} from '@material-ui/core';
+import { UserConsumer } from '../../Context/UserContext';
 
-export const Header = (props) => {
+export const Header = () => {
   const history = useHistory();
-  const { isAuth, setAuth, setUser } = props;
+	const {isAuth} = useContext(UserConsumer);
 
   const logout = (e) => {
     e.preventDefault();

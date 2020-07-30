@@ -1,16 +1,18 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { UserConsumer } from '../Context/UserContext';
+
+
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) => {
-      if (rest.isAuth) {
-        return <Component {...props} />;
-      }
-      return <Redirect to={`/login`} />;
-    }}
-  />
+	<UserConsumer>
+		{({ isAuth }) => (
+			<Route
+        render={(props) => isAuth ? <Component {...props} /> : <Redirect to={`/login`} />}
+      {...rest}
+			/>
+		)}
+	</UserConsumer>
 );
 
 export default PrivateRoute;
