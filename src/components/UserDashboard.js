@@ -12,25 +12,25 @@ import { axiosWithAuth } from '../utils/AxiosWithAuth';
 export default function UserDashboard() {
     const [user, setUser] = useState([]);
 
-    const userData = {
-        id: 99,
-        name: 'Test User',
-        email: 'test@test.com',
-        values: [1,2,4,5,6,10],
-        projects: [
-          {
-            name: 'Make stubs',
-            desc: 'Make stubs while waiting for the backend',
-            time: '',
-            values: [1]
-          }
-        ],
-        topValues: {
-          1: 1,
-          2: 2,
-          3: 6
-        }
-      };
+    // const userData = {
+    //     id: 99,
+    //     name: 'Test User',
+    //     email: 'test@test.com',
+    //     values: [1,2,4,5,6,10],
+    //     projects: [
+    //       {
+    //         name: 'Make stubs',
+    //         desc: 'Make stubs while waiting for the backend',
+    //         time: '',
+    //         values: [1]
+    //       }
+    //     ],
+    //     topValues: {
+    //       1: 1,
+    //       2: 2,
+    //       3: 6
+    //     }
+    //   };
 
     useEffect(() => {
         axiosWithAuth()
