@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
-import axios from 'axios';
+import {axiosWithAuth} from '../utils/AxiosWithAuth';
 
 // validation schema
 const formSchema = yup.object().shape({
   //Old Schema
-  // name: yup.string().required('Name is a required field.').min(2, 'That\'s not a name.'),
+  name: yup.string().required('Name is a required field.').min(2, 'That\'s not a name.'),
   email: yup.string().required('An email is required.').email(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
   password: yup.string().required('A password is required.').min(2, 'Your password must be at least 2 characters.')
 });
@@ -14,7 +14,7 @@ const Register = () => {
   // state to hold data for form inputs
   const [formState, setFormState] = useState({
     // Old Schema
-    // name: '',
+    name: '',
     email: '',
     password: ''
   });
@@ -33,7 +33,7 @@ const Register = () => {
   // state to hold data for error messages
   const [errorState, setErrorState] = useState({
     // Old Schema
-    // name: '',
+    name: '',
     email: '',
     password: ''
 });
@@ -80,15 +80,16 @@ const Register = () => {
     e.preventDefault();
     console.log('form submitted!');
 
-    axios
-      .post('https://essentialism-bw.herokuapp.com/api/register', formState)
+    axiosWithAuth()
+      .post('/register', formState)
       .then(response => {
+
         console.log(response);
         // setPost(response.data);
 
         // reset form if successful
         setFormState({
-          // name: '',
+          name: '',
           email: '',
           password: ''
         });
@@ -104,7 +105,7 @@ const Register = () => {
                 Let's get you started!
             </p>
             <div className='form-style'>
-                {/* <label htmlFor='name' className='nameText'>
+                <label htmlFor='name' className='nameText'>
                 <input
                     type='text'
                     name='name'
@@ -116,7 +117,7 @@ const Register = () => {
                 </label>
                 {errorState.name.length > 0 ? (
                 <p className='error'>{errorState.name}</p>
-                ) : null} */}
+                ) : null}
                  <label htmlFor='email' className='emailText'>
                 <input
                     type='email'

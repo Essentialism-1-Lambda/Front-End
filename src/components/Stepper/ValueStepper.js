@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Stepper, Step, StepLabel, Button } from '@material-ui/core/Stepper';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import { axiosWithAuth } from '../../utils/AxiosWithAuth';
-import { ValueForm } from './AddValues';
-import { Reflection } from './ReflectValues';
+// import { axiosWithAuth } from '../../utils/AxiosWithAuth';
+import {ValueForm} from './AddValues';
+import {Reflection} from './ReflectValues';
 import {FinalValues} from './FinalForm';
+import {UserContext} from '../../Context/UserContext';
+import {ValueContext} from '../../Context/ValueContext';
+
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -22,19 +29,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const initialValues = {
-	family: '',
-	environmental: '',
-	financial: '',
-	health: '',
-	community: '',
-	creativity: '',
-	positivity: '',
-	efficiency: '',
-	loyalty: '',
-	spirituality: '',
-};
-
 function getSteps() {
 	return [
 		'Select your Values',
@@ -43,33 +37,32 @@ function getSteps() {
 	];
 }
 
-export default function HorizontalLabelPositionBelowStepper() {
+export default function ValueStepper() {
+
 	const classes = useStyles();
 	const [activeStep, setActiveStep] = useState(0);
 	const steps = getSteps();
-	const id = useParams();
+	// const id = useParams();
 	const history = useHistory();
-  const [userValues, setUserValues] = useState(initialValues);
-  const [reflection, setReflection] = useState('');
-
-  const handleValueChange = (input) => (event) =>
-  setUserValues({
-			...userValues,
-			[input]: event.target.value,
-		});
+	const {user} = useContext(UserContext);
+	const [reflection, setReflection] = useState('');
+	const {values, handleValueChange, setUser} = useContext(ValueContext);
 
 	const getStepContent = (stepIndex) => {
 		switch (stepIndex) {
 			case 0:
+				// return 'I might render...';
 				return (
 					<>
             <ValueForm
-            userValues={userValues}
+						values={values}
+            userValues={user.values}
             handleValueChange={handleValueChange}
             />
 					</>
 				);
 			case 1:
+				// return 'its not me!';
 				return (
 					<>
             <Reflection
@@ -79,11 +72,13 @@ export default function HorizontalLabelPositionBelowStepper() {
 					</>
 				);
 			case 2:
+				// return 'im not it!';
 				return (
           <>
             <FinalValues
               reflection={reflection}
-              userValues={userValues}
+							userValues={user.values}
+							topValues={user.topValues}
               handleValueChange={handleValueChange}
             />
           </>
@@ -109,18 +104,26 @@ export default function HorizontalLabelPositionBelowStepper() {
   setReflection({
 			...reflection,
 			[input]: event.target.value,
-		});
+		}
+);
 
 
-	const handleSubmit = async () => {
-		axiosWithAuth()
-			.post(`${id}/values`, userValues)
-			.then((res) => {
-				console.log({ userValuesResponse: res.data });
-				history.push(`/dashboard`);
-			})
-			.catch((err) => console.log({ userValues: err }));
-	};
+	// const handleSubmit = async () => {
+	// 	axiosWithAuth()
+	// 		.post(`${id}/values`, user.values)
+	// 		.then((res) => {
+	// 			console.log({ userValuesResponse: res.data });
+	// 			history.push(`/dashboard`);
+	// 		})
+	// 		.catch((err) => console.log({ userValues: err }));
+		const handleSubmit = async (input) => {
+			return (event) => setUser({
+				...user.values,
+				[input]: event.target.value,
+			},
+				history.push('/dashboard')
+			);
+		};
 
 	return (
 		<div className={classes.root}>

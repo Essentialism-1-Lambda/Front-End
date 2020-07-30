@@ -1,6 +1,5 @@
 import { createContext } from 'react';
 
-
     //import as:
     // import { UserContext } from './utils/UserContext';
 
@@ -14,4 +13,7 @@ import { createContext } from 'react';
     //     </UserContext.Provider>
     // );
 
-export const UserContext = createContext();
+const UserContext = createContext();
+const UserProvider = UserContext.Provider;
+const UserConsumer = UserContext.Consumer;
+export {UserProvider, UserConsumer, UserContext};
