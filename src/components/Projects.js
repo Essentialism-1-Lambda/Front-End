@@ -2,46 +2,69 @@ import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
 
-// validation schema
+
 const formSchema = yup.object().shape({
-  project: yup.string().required('Project name is a required field.').min(2, 'That is not a project name.'),
-  details: yup.string().required('Project details are required'),
+//   project: yup.string().required('Project name is a required field.').min(2, 'That is not a project name.'),
+//   desc: yup.string().required('Project details are required'),
+  name: yup.string(),
+  desc: yup.string(),
   time: yup.string(),
+  values: yup.string(),
 });
 
 const Projects = () => {
-  // state to hold data for form inputs
+
+    const userData = {
+        id: 99,
+        name: 'Test User',
+        email: 'test@test.com',
+        values: [1,2,4,5,6,10],
+        projects: [
+          {
+            name: 'Make stubs',
+            desc: 'Make stubs while waiting for the backend',
+            time: '',
+            values: [1]
+          }
+        ],
+        topValues: {
+          1: 1,
+          2: 2,
+          3: 6
+        }
+      };
+
+  
   const [formState, setFormState] = useState({
-    project: '',
-    details: '',
+    name: '',
+    desc: '',
     time: '',
+    values: '',
   });
 
-  // state for whether the button should be disabled or not.
+
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  // Every time the formState changes, check to see if it passes verification.
-    //If it does, then enable the submit button, otherwise disable.
     useEffect(() => {
       formSchema.isValid(formState).then(valid => {
           setButtonDisabled(!valid);
       });
   }, [formState]);
 
-  // state to hold data for error messages
+
   const [errorState, setErrorState] = useState({
-    project: '',
-    details: '',
+    name: '',
+    desc: '',
     time: '',
+    values: '',
 });
 
-  // state to set the POST request. 
+
   const [post, setPost] = useState([]);
 
-  // validation; validate event against the schema
   const validateChange = (e) => {
-    let value =
-      e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    
     yup
       .reach(formSchema, e.target.name)
       .validate(value)
@@ -61,18 +84,15 @@ const Projects = () => {
     });
   };
 
-  // onChange Function
+
   const inputChange = e => {
     e.persist();
     validateChange(e)
     let value = 
         e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    // console.log("name is: ", e.target.name);
     setFormState({ ...formState, [e.target.name]: value })
 };
 
-  // onSubmit Function
-  // POSTs data to server
   const formSubmit = e => {
     e.preventDefault();
     console.log('Project form submitted!');
@@ -83,15 +103,27 @@ const Projects = () => {
         setPost(response.data);
         // props.history.push("/Projects")
 
-        // reset form if successful
         setFormState({
-            project: '',
-            details: '',
+            name: '',
+            desc: '',
             time: '',
+            values: '',
         });
       })
       .catch(err => console.log(err.response));
   };
+
+    // useEffect(() => {
+    //     axiosWithAuth()
+    //     .get("https://essentialism-bw.herokuapp.com/api/projects")
+    //     .then(res => {
+    //         console.log('dashboard effect ', res.data)
+    //         setUser(res.data)
+    //         }
+    //     )
+    //     .catch(err => console.log(err));
+    //     console.log("this is user from API", user);
+    // }, [])
 
 
   return (
@@ -103,11 +135,11 @@ const Projects = () => {
 
                 <div className='form-style'>
 
-                    <label htmlFor='project' className='projectTitle'>
+                    <label htmlFor='name' className='projectName'>
                         <input 
                             type='text' 
-                            name='project' 
-                            id='project'
+                            name='name' 
+                            id='name'
                             placeholder='Project Name'
                             value={formState.project}
                             onChange={inputChange} 
@@ -117,13 +149,13 @@ const Projects = () => {
                         <p className='error'>{errorState.project}</p>
                         ) : null}
 
-                    <label htmlFor='details' className='detailsText'>
+                    <label htmlFor='desc' className='descText'>
                         Describe the project you're working on:
                         <textarea 
-                            name='details' 
-                            id='details' 
-                            placeholder='Details'
-                            value={formState.details}
+                            name='desc' 
+                            id='desc' 
+                            placeholder='Describe'
+                            value={formState.desc}
                             onChange={inputChange} 
                         />
                     </label>
@@ -140,7 +172,7 @@ const Projects = () => {
 
                 <pre>{JSON.stringify(post, null, 2)}</pre>
                 
-                <button disabled={buttonDisabled}>Sign Up</button>
+                <button disabled={buttonDisabled}>Add Project</button>
 
             </form>
     </div>
