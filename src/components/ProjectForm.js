@@ -113,19 +113,6 @@ const Projects = () => {
       .catch(err => console.log(err.response));
   };
 
-    // useEffect(() => {
-    //     axiosWithAuth()
-    //     .get("https://essentialism-bw.herokuapp.com/api/projects")
-    //     .then(res => {
-    //         console.log('dashboard effect ', res.data)
-    //         setUser(res.data)
-    //         }
-    //     )
-    //     .catch(err => console.log(err));
-    //     console.log("this is user from API", user);
-    // }, [])
-
-
   return (
     <div className='project-body'>
         <form onSubmit={formSubmit}>

@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
 
 // import ValueCard from './ValueCard';
-// import Projects from './Projects.js';
+// import ProjectList from './ProjectList';
+// import ProjectForm from './ProjectForm';
 
     // api will be used to pull and render user information, or we can store it into a usercontext
     // will be a private route, along with onboarding
@@ -11,7 +12,7 @@ import { axiosWithAuth } from '../utils/AxiosWithAuth';
 export default function UserDashboard() {
     const [user, setUser] = useState([]);
 
-    const completeUserStub = {
+    const userData = {
         id: 99,
         name: 'Test User',
         email: 'test@test.com',
@@ -53,19 +54,12 @@ export default function UserDashboard() {
                 {/* <ValueCard /> */}
             </div>
             <div className="dashboard-projects">
-                {/* <Projects /> */}
+                {/* <ProjectList /> */}
 
-                {/* {
-                    user.map(user => ( 
-                              <div key={completeUserStub.projects.id} className='projects'>
-                                  <p>Project: {completeUserStub.projects.name}</p>
-                                  <p>desc: {completeUserStub.projects.desc}</p>
-                                  <p>time: {completeUserStub.projects.time}</p>
-                                  <p>values: {completeUserStub.projects.values}</p>
-                              </div>
-                      )
-                    )
-                } */}
+            </div>
+            <div className="dashboard-add-projects">
+                {/* <ProjectForm /> */}
+
             </div>
 
         </div>

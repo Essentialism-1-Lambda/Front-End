@@ -46,21 +46,23 @@ export default function ValueCard() {
 
   return (
     <div>
-      <Button type="button" onClick={handleOpen}>
-        Family
-      </Button>
-      <Button type="button" onClick={handleOpen}>
-        Community
-      </Button>
-      <Button type="button" onClick={handleOpen}>
-        Health and Wellness
-      </Button>
-      <Button type="button" onClick={handleOpen}>
-        Environmental
-      </Button>
-      <Button type="button" onClick={handleOpen}>
-        Financial
-      </Button>
+        <div className="valueBtns">
+            <Button type="button" onClick={handleOpen}>
+                Family
+            </Button>
+            <Button type="button" onClick={handleOpen}>
+                Community
+            </Button>
+            <Button type="button" onClick={handleOpen}>
+                Health and Wellness
+            </Button>
+            <Button type="button" onClick={handleOpen}>
+                Environmental
+            </Button>
+            <Button type="button" onClick={handleOpen}>
+                Financial
+            </Button>
+        </div>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -80,7 +82,7 @@ export default function ValueCard() {
                 <CardMedia
                   className={classes.media}
                   image="/static/images/cards/contemplative-reptile.jpg"
-                  title="Contemplative Reptile"
+                  title="Value icon"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
@@ -91,7 +93,7 @@ export default function ValueCard() {
                     color="textSecondary"
                     component="p"
                   >
-                    {/* <AddProjectsForm />, <Projects /> */}
+                    {/* <Projects /> */}
                     List projects below title/scroll, with edit button/delete
                     button and drop down for date and time spent on activity
                   </Typography>
@@ -100,7 +102,6 @@ export default function ValueCard() {
               <CardActions>
                 <Button size="small" color="primary">
                   Add Projects
-                  {/* make this a scroll module dialog form */}
                 </Button>
                 <Button size="small" color="primary">
                   Dashboard - All Projects
