@@ -10,12 +10,12 @@ import ValueStepper from './components/Stepper/ValueStepper';
 import Header from './components/Nav/Header';
 import UserDashboard from './components/UserDashboard';
 
-import { UserProvider } from './Context/UserContext';
+import {UserProvider} from './Context/UserContext';
 import {ValueProvider} from './Context/ValueContext';
 import {registerStub, valuesStub} from './DataStubs/data';
 
 function App() {
-  // const token = localStorage.getItem('token');
+  //const token = localStorage.getItem('token');
 	//const [isAuth, setAuth] = useState(token !== '' ? token : null);
 	const [isAuth, setAuth] = useState(
 		registerStub !== null ? registerStub : null
@@ -33,11 +33,11 @@ function App() {
 	return (
 		<div className='App'>
 			<Switch>
-				<UserProvider value={{ user, isAuth, setAuth }}>
-					<Header setUser={setUser}  />
+				<UserProvider value={{ user, isAuth, setAuth, setUser }}>
+					<Header />
 					<PrivateRoute path='/dashboard' component={UserDashboard} />
         <ValueProvider value={{values, handleValueChange}} >
-					<PrivateRoute path='/onboarding' componenet={ValueStepper} />
+					<PrivateRoute path='/onboarding' component={ValueStepper} />
         </ValueProvider>
 					<Route path='/register' component={Register} />
 					<Route path='/login' component={UserLogin} />

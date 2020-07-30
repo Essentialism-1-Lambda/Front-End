@@ -5,14 +5,16 @@ import { UserContext } from '../../Context/UserContext';
 
 export const Header = () => {
   const history = useHistory();
-	const {isAuth} = useContext(UserContext);
+	const {isAuth, setAuth, setUser} = useContext(UserContext);
 
   const logout = (e) => {
-    e.preventDefault();
-    localStorage.removeItem('token');
-    window.location.reload(false);
-    history.push('/');
-  };
+		e.preventDefault();
+		setAuth(null);
+		setUser({});
+		localStorage.removeItem('token');
+		window.location.reload(false);
+		history.push('/');
+	};
 
   return (
     <div className='nav-bar'>
