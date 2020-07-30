@@ -97,7 +97,7 @@ const Projects = () => {
     e.preventDefault();
     console.log('Project form submitted!');
     axios
-      .post('https://essentialism-bw.herokuapp.com/api/projects', formState)
+      .post(`https://essentialism-bw.herokuapp.com/api/users/${users.id}/project/${project.id}`, formState)
       .then(response => {
         console.log(response)
         setPost(response.data);
@@ -112,7 +112,7 @@ const Projects = () => {
       })
       .catch(err => console.log(err.response));
   };
-
+  
   return (
     <div className='project-body'>
         <form onSubmit={formSubmit}>

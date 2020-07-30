@@ -3,6 +3,30 @@ import { axiosWithAuth } from '../utils/AxiosWithAuth';
 
 import "../index.css";
 
+
+// Users
+// GET /api/users
+// GET /api/users/(ID)
+
+// Delete /api/users/(ID)
+// Update PUT /api/users/(ID)
+
+// Projects
+// GET /api/users/(ID)/project
+// GET (by project id) /api/users/(ID)/project/( ProjectID )
+
+// update /api/users/(ID)/project/( ProjectID )
+// Delete /api/users/(ID)/project/( ProjectID )
+
+// Values
+// GET /api/values
+// GET ( users value by ID ) /api/users/(ID)/values/( ValuesID )
+
+// Update /api/users/(ID)/values/( ValuesID )
+// Delete /api/users/(ID)/values/( ValuesID )
+
+
+
 const ProjectList = () => {
     
     const [listState, setListState] =useState([]);

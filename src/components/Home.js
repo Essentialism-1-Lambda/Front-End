@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import Header from './Nav/Header';
 
 const Home = () => {
   return (
     <div className='home'>
       <div className='nav'>
+
+        {/* <Header /> */}
+        {/* plan to move links into header */}
         <Link to={'/login'}
           className='userlogin-link'
         >

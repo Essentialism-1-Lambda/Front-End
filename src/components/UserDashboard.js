@@ -11,6 +11,10 @@ import { axiosWithAuth } from '../utils/AxiosWithAuth';
 
 export default function UserDashboard() {
     const [user, setUser] = useState([]);
+    const [project, setProject] = useState({});
+    const [values, setValues ] = useState({});
+
+    //consume data using context
 
     // const userData = {
     //     id: 99,
@@ -34,7 +38,7 @@ export default function UserDashboard() {
 
     useEffect(() => {
         axiosWithAuth()
-          .get("https://essentialism-bw.herokuapp.com/api/projects")
+          .get("https://essentialism-bw.herokuapp.com/api/users")
           .then(res => {
               console.log('dashboard effect ', res.data)
               setUser(res.data)
@@ -47,8 +51,7 @@ export default function UserDashboard() {
     return (
         <div className="dashboard-container">
             <div className="dashboard-welcome">
-                {/* Welcome {user.name}. View your values and add/edit your projects */}
-
+                Welcome {user.name}. View your values and add/edit your projects
             </div>
             <div className="dashboard-values">
                 {/* <ValueCard /> */}
