@@ -62,20 +62,20 @@ const ProjectList = () => {
                 {
                     listState.map((project, i) => {
                         return(
-                          <div key={user.projects.id} className='projects'>
+                          <div key={userData.projects.id} className='projects'>
                             <p>Project: {userData.projects.name}</p>
                             <p>desc: {userData.projects.desc}</p>
                             <p>time: {userData.projects.time}</p>
                             <p>values: {userData.projects.values}</p>
-                            
+
                               <button className="delete-btn" onClick={deleteProject}>
                                 Delete
                               </button>
-                              <button
+                              {/* <button
                                   className="edit-btn" 
                                   onClick={() => push(`https://essentialism-bw.herokuapp.com/api/user/${id}/projects/${project.id}`)}>
                                     Edit
-                              </button>
+                              </button> */}
                           </div>
                         );
                      })

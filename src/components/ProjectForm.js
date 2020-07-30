@@ -85,7 +85,6 @@ const Projects = () => {
       })
       .catch(err => console.log(err.response));
   
-  
   return (
     <div className='project-body'>
         <form onSubmit={formSubmit}>

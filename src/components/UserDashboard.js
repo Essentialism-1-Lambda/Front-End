@@ -2,9 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
 
-const {values, handleValueChange, setUser} = useContext(ValueConsumer);
-import {UserConsumer} from '../../Context/UserContext';
-import {ValueConsumer} from '../../Context/ValueContext';
 
 // import ValueCard from './ValueCard';
 // import ProjectList from './ProjectList';
@@ -40,7 +37,7 @@ export default function UserDashboard() {
                 <ValueCard
 						values={values}
                         userValues={user.values}
-                        handleValueChange={handleValueChange}
+                        handleValueChange={}
                 />
             </div>
             <div className="dashboard-projects">
