@@ -2,15 +2,18 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 //import { useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 // import { axiosWithAuth } from '../../utils/AxiosWithAuth';
-import { ValueForm } from './AddValues';
-import { Reflection } from './ReflectValues';
+import {ValueForm} from './AddValues';
+import {Reflection} from './ReflectValues';
 import {FinalValues} from './FinalForm';
-import {UserConsumer} from '../../Context/UserContext';
-import {ValueConsumer} from '../../Context/ValueContext';
+import {UserContext} from '../../Context/UserContext';
+import {ValueContext} from '../../Context/ValueContext';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,13 +44,14 @@ export default function ValueStepper() {
 	const steps = getSteps();
 	// const id = useParams();
 	const history = useHistory();
-	const {user} = useContext(UserConsumer);
+	const {user} = useContext(UserContext);
 	const [reflection, setReflection] = useState('');
-	const {values, handleValueChange, setUser} = useContext(ValueConsumer);
+	const {values, handleValueChange, setUser} = useContext(ValueContext);
 
 	const getStepContent = (stepIndex) => {
 		switch (stepIndex) {
 			case 0:
+				// return 'I might render...';
 				return (
 					<>
             <ValueForm
@@ -58,6 +62,7 @@ export default function ValueStepper() {
 					</>
 				);
 			case 1:
+				// return 'its not me!';
 				return (
 					<>
             <Reflection
@@ -67,6 +72,7 @@ export default function ValueStepper() {
 					</>
 				);
 			case 2:
+				// return 'im not it!';
 				return (
           <>
             <FinalValues
@@ -103,13 +109,13 @@ export default function ValueStepper() {
 
 
 	// const handleSubmit = async () => {
-		// axiosWithAuth()
-		// 	.post(`${id}/values`, user.values)
-		// 	.then((res) => {
-		// 		console.log({ userValuesResponse: res.data });
-		// 		history.push(`/dashboard`);
-		// 	})
-		// 	.catch((err) => console.log({ userValues: err }));
+	// 	axiosWithAuth()
+	// 		.post(`${id}/values`, user.values)
+	// 		.then((res) => {
+	// 			console.log({ userValuesResponse: res.data });
+	// 			history.push(`/dashboard`);
+	// 		})
+	// 		.catch((err) => console.log({ userValues: err }));
 		const handleSubmit = async (input) => {
 			return (event) => setUser({
 				...user.values,

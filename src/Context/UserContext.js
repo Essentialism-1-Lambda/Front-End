@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD:src/utils/UserContext.js
 import React, { useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import {Button} from '@material-ui/core';
@@ -7,6 +8,10 @@ import { UserContext } from '../../Context/UserContext';
 export const Header = () => {
   const history = useHistory();
 	const {isAuth} = useContext(UserContext);
+=======
+    //import as:
+    // import { UserContext } from './utils/UserContext';
+>>>>>>> 66361b259ed43bd6db5f1271b3e560fd9430bc4a:src/Context/UserContext.js
 
   const logout = (e) => {
     e.preventDefault();
@@ -15,6 +20,7 @@ export const Header = () => {
     history.push('/');
   };
 
+<<<<<<< HEAD:src/utils/UserContext.js
   return (
     <div className='nav-bar'>
       {isAuth ? (
@@ -53,3 +59,17 @@ export const Header = () => {
   );
 }
 export default Header;
+=======
+    // return (
+    //     <UserContext.Provider value={user}>
+    //         <div className="container">
+    //             <User />
+    //         </div>
+    //     </UserContext.Provider>
+    // );
+
+const UserContext = createContext();
+const UserProvider = UserContext.Provider;
+const UserConsumer = UserContext.Consumer;
+export {UserProvider, UserConsumer, UserContext};
+>>>>>>> 66361b259ed43bd6db5f1271b3e560fd9430bc4a:src/Context/UserContext.js
