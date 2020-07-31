@@ -1,4 +1,11 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+import { userData } from '../DataStubs/data';
+import { ValuesIcon } from './ValuesIcon.jpg';
+// import ProjectList from './ProjectList';
+
+
+
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -33,18 +40,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const initialValues = {
-	family: '',
-	environmental: '',
-	financial: '',
-	health: '',
-	community: '',
-	creativity: '',
-	positivity: '',
-	efficiency: '',
-	loyalty: '',
-	spirituality: '',
-};
 
 export default function ValueCard() {
   const classes = useStyles();
@@ -57,6 +52,8 @@ export default function ValueCard() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  
 
   return (
     <div>
@@ -77,6 +74,7 @@ export default function ValueCard() {
                 Financial
             </Button>
         </div>
+
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -95,32 +93,30 @@ export default function ValueCard() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  title="Value icon"
+                  image="./ValuesIcon"
+                  title="Values icon"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Value Title
+                      Value Title
+                    {/* ${userData.values} */}
                   </Typography>
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    {/* <Projects /> */}
-                    List projects below title/scroll, with edit button/delete
-                    button and drop down for date and time spent on activity
+                    {/* <ProjectList projects={userData.projects}> */}
+
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Add Projects
-                </Button>
-                <Button size="small" color="primary">
-                  Dashboard - All Projects
-                </Button>
-              </CardActions>
+                <CardActions>
+                    
+                    <Button size="small" color="primary">
+                          View Dashboard
+                    </Button>
+                </CardActions>
             </Card>
             {/* <h2 id="transition-modal-title">Transition modal</h2>
             <p id="transition-modal-description">react-transition-group animates me.</p> */}

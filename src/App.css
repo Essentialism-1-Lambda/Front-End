@@ -71,6 +71,23 @@ button {
   border-radius: 5px;
   letter-spacing: 2px;
   outline: none;
+  /* background-color: #555856;
+  background-image: linear-gradient(to right, #555857, #1c1d1b); */
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin-right: 10%;
+}
+
+.links button {
+  width: 150px;
+  padding: 2px 2px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  outline: none;
   background-color: #555856;
   background-image: linear-gradient(to right, #555857, #1c1d1b);
   color: #fff;
@@ -177,3 +194,10 @@ input#family {
   padding-top: 20%;
 }
   
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  width: 100%;
+  padding: 20px;
+}

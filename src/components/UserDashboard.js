@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
-import { userData } from '../Datastubs/data';
+import { userData } from '../DataStubs/data';
 
 
 import ValueCard from './ValueCard';
@@ -14,7 +14,7 @@ import ValueCard from './ValueCard';
 export default function UserDashboard() {
     const [user, setUser] = useState(userData);
     // const [project, setProject] = useState([]);
-    const [values, setValues ] = useState([]);
+    const [values, setValues ] = useState(userData);
 
     useEffect(() => {
         axiosWithAuth()
@@ -31,7 +31,7 @@ export default function UserDashboard() {
     return (
         <div className="dashboard-container">
             <div className="dashboard-welcome">
-                Welcome {`${user.name}`}. View your values and add/delete your projects
+                Welcome <span><b>{`${user.name}`}</b></span>, view your values and add or delete your projects
             </div>
             <div className="dashboard-values">
                 <ValueCard

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
-import { userData } from '../Datastubs/data';
+import { userData } from '../DataStubs/data';
 import "../index.css";
 
 
@@ -49,7 +49,7 @@ const ProjectList = () => {
         .catch(err => console.log(err));
     }, [])
 
-    
+
     return(
         <div className="projectListDiv">
           
