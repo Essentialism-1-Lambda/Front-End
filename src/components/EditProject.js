@@ -45,7 +45,7 @@ const EditProject = props => {
       .then(res => {
         // res.data
         props.setItems(res.data);
-        push(`/item-list/${id}`);
+        push(`https://essentialism-bw.herokuapp.com/api/users/${id}/projects/${project.id}`);
       })
       .catch(err => console.log(err));
   };
@@ -54,7 +54,7 @@ const EditProject = props => {
     <div>
       <form onSubmit={formSubmit}>
                 <p  className='intake-header'>
-                    Record your projects. 
+                    Edit your project. 
                 </p>
                 <div className='form-style'>
                     <label htmlFor='name' className='projectName'>
@@ -89,9 +89,8 @@ const EditProject = props => {
                         </select>
                     </label>
                 </div>
-                <pre>{JSON.stringify(post, null, 2)}</pre>
                 
-                <button disabled={buttonDisabled}>Add Project</button>
+                <button disabled={buttonDisabled}>Save Project</button>
             </form>
     </div>
   );
