@@ -9,7 +9,7 @@ const initialItem = {
     values: '',
 };
 
-const UpdateForm = props => {
+const UpdateProject = props => {
   const { push } = useHistory();
   const [item, setItem] = useState(initialItem);
   const { id } = useParams();
@@ -104,4 +104,4 @@ const UpdateForm = props => {
   );
 };
 
-export default UpdateForm;
+export default UpdateProject;

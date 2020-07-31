@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { axiosWithAuth } from '../../utils/AxiosWithAuth';
-
-
 const formSchema = yup.object().shape({
     //   project: yup.string().required('Project name is a required field.').min(2, 'That is not a project name.'),
     //   desc: yup.string().required('Project details are required'),
@@ -11,7 +9,6 @@ const formSchema = yup.object().shape({
     time: yup.string(),
     values: yup.string(),
   });
-
 const Projects = () => {
   const [formState, setFormState] = useState({
     name: '',
@@ -19,22 +16,18 @@ const Projects = () => {
     time: '',
     values: '',
   });
-
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [post, setPost] = useState([]);
-
   const [errorState, setErrorState] = useState({
     name: '',
     desc: '',
     time: '',
     values: '',
   });
-
   useEffect(() => {
     formSchema.isValid(formState).then(valid => {
         setButtonDisabled(!valid);
     }), [formState]});
-
   const validateChange = (e) => {
     let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     
@@ -56,7 +49,6 @@ const Projects = () => {
         });
     });
   };
-
   const inputChange = e => {
     e.persist();
     validateChange(e)
@@ -64,8 +56,6 @@ const Projects = () => {
         e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setFormState({ ...formState, [e.target.name]: value });
   };
-
-
   const formSubmit = async () => {
     e.preventDefault();
     console.log('Project form submitted!');
@@ -75,7 +65,6 @@ const Projects = () => {
         console.log(response)
         setPost(response.data);
         history.push("/Projects")
-
         setFormState({
             name: '',
             desc: '',
@@ -84,16 +73,15 @@ const Projects = () => {
         });
       })
       .catch(err => console.log(err.response));
-  
+
+
   return (
     <div className='project-body'>
         <form onSubmit={formSubmit}>
                 <p  className='intake-header'>
                     Record your projects. 
                 </p>
-
                 <div className='form-style'>
-
                     <label htmlFor='name' className='projectName'>
                         <input 
                             type='text' 
@@ -107,7 +95,6 @@ const Projects = () => {
                         {errorState.project.length > 0 ? (
                         <p className='error'>{errorState.project}</p>
                         ) : null}
-
                     <label htmlFor='desc' className='descText'>
                         Describe the project you're working on:
                         <textarea 
@@ -118,7 +105,6 @@ const Projects = () => {
                             onChange={inputChange} 
                         />
                     </label>
-
                     <label htmlFor='time' className='timeDropdown'>
                         <select value={formState.time} onChange={inputChange}>
                             <option value="thirty">Less than 30 min</option>
@@ -128,14 +114,11 @@ const Projects = () => {
                         </select>
                     </label>
                 </div>
-
                 <pre>{JSON.stringify(post, null, 2)}</pre>
                 
                 <button disabled={buttonDisabled}>Add Project</button>
-
             </form>
     </div>
   )
 }
-
 export default ProjectForm;
