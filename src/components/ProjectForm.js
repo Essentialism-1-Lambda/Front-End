@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { axiosWithAuth } from '../../utils/AxiosWithAuth';
+import { EditProject } from './EditProject';
+
+
+
 const formSchema = yup.object().shape({
     //   project: yup.string().required('Project name is a required field.').min(2, 'That is not a project name.'),
     //   desc: yup.string().required('Project details are required'),
@@ -9,13 +13,16 @@ const formSchema = yup.object().shape({
     time: yup.string(),
     values: yup.string(),
   });
+
 const Projects = () => {
   const [formState, setFormState] = useState({
     name: '',
     desc: '',
     time: '',
     values: '',
+  
   });
+
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [post, setPost] = useState([]);
   const [errorState, setErrorState] = useState({
@@ -24,11 +31,13 @@ const Projects = () => {
     time: '',
     values: '',
   });
-  useEffect(() => {
-    formSchema.isValid(formState).then(valid => {
-        setButtonDisabled(!valid);
-    }), [formState]});
-  const validateChange = (e) => {
+
+  // useEffect(() => {
+  //   formSchema.isValid(formState).then(valid => {
+  //       setButtonDisabled(!valid);
+  //   }), [formState]});
+  
+    const validateChange = (e) => {
     let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     
     yup
@@ -49,6 +58,7 @@ const Projects = () => {
         });
     });
   };
+
   const inputChange = e => {
     e.persist();
     validateChange(e)
@@ -56,23 +66,26 @@ const Projects = () => {
         e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setFormState({ ...formState, [e.target.name]: value });
   };
+
   const formSubmit = async () => {
     e.preventDefault();
     console.log('Project form submitted!');
-    axiosWithAuth()
-      .post(`https://essentialism-bw.herokuapp.com/api/users/${id}/projects/${project.id}`, formState)
-      .then(response => {
-        console.log(response)
-        setPost(response.data);
-        history.push("/Projects")
-        setFormState({
-            name: '',
-            desc: '',
-            time: '',
-            values: '',
-        });
-      })
-      .catch(err => console.log(err.response));
+    history.push("/Projects")
+  }
+    // axiosWithAuth()
+    //   .post(`https://essentialism-bw.herokuapp.com/api/users/${id}/projects/${project.id}`, formState)
+    //   .then(response => {
+    //     console.log(response)
+    //     setPost(response.data);
+    //     history.push("/Projects")
+    //     // setFormState({
+    //     //     name: '',
+    //     //     desc: '',
+    //     //     time: '',
+    //     //     values: '',
+    //     // });
+    //   })
+      // .catch(err => console.log(err.response));
 
 
   return (
@@ -117,8 +130,9 @@ const Projects = () => {
                 <pre>{JSON.stringify(post, null, 2)}</pre>
                 
                 <button disabled={buttonDisabled}>Add Project</button>
+                <button onClick={EditProject}>Edit Project</button>
             </form>
     </div>
   )
 }
-export default ProjectForm;
+export default Projects;

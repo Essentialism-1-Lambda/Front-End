@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
+import { userData } from '../Datastubs/data';
 
 
-// import ValueCard from './ValueCard';
+import ValueCard from './ValueCard';
 // import ProjectList from './ProjectList';
 // import ProjectForm from './ProjectForm';
 
@@ -11,9 +12,9 @@ import { axiosWithAuth } from '../utils/AxiosWithAuth';
     // will be a private route, along with onboarding
 
 export default function UserDashboard() {
-    const [user, setUser] = useState([]);
-    const [project, setProject] = useState({});
-    const [values, setValues ] = useState({});
+    const [user, setUser] = useState(userData);
+    // const [project, setProject] = useState([]);
+    const [values, setValues ] = useState([]);
 
     useEffect(() => {
         axiosWithAuth()
@@ -30,23 +31,20 @@ export default function UserDashboard() {
     return (
         <div className="dashboard-container">
             <div className="dashboard-welcome">
-                Welcome {user.name}. View your values and add/edit your projects
+                Welcome {`${user.name}`}. View your values and add/delete your projects
             </div>
             <div className="dashboard-values">
-                {/* <ValueCard /> */}
                 <ValueCard
 						values={values}
                         userValues={user.values}
-                        handleValueChange={}
                 />
             </div>
             <div className="dashboard-projects">
-                {/* <ProjectList /> */}
+                {/* <ProjectList projects={user.projects} /> */}
 
             </div>
             <div className="dashboard-add-projects">
-                {/* <ProjectForm /> */}
-
+                {/* <ProjectForm projects={user.projects} /> */}
             </div>
 
         </div>
