@@ -12,7 +12,7 @@ import UserDashboard from './components/UserDashboard';
 
 import {UserProvider} from './Context/UserContext';
 import {ValueProvider} from './Context/ValueContext';
-import {registerStub, valuesStub} from './DataStubs/data';
+import {registerStub, values} from './DataStubs/data';
 
 function App() {
   //const token = localStorage.getItem('token');
@@ -22,11 +22,11 @@ function App() {
 	);
 	//const [user, setUser] = useState(getUserFromToken(token));
   const [user, setUser] = useState(registerStub);
-  const [values, setValues] = useState(valuesStub);
+  const [value, setValue] = useState(values);
 
   const handleValueChange = (input) => (event) =>
-  setValues({
-			...user.values,
+  setValue({
+			...user.value,
 			[input]: event.target.value,
 		});
 
@@ -36,7 +36,7 @@ function App() {
 				<UserProvider value={{ user, isAuth, setAuth, setUser }}>
 					<Header />
 					<PrivateRoute path='/dashboard' component={UserDashboard} />
-        <ValueProvider value={{values, handleValueChange}} >
+        <ValueProvider value={{value, handleValueChange}} >
 					<PrivateRoute path='/onboarding' component={ValueStepper} />
         </ValueProvider>
 					<Route path='/register' component={Register} />

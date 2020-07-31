@@ -86,7 +86,6 @@ const Register = () => {
 
         console.log(response);
         // setPost(response.data);
-
         // reset form if successful
         setFormState({
           name: '',

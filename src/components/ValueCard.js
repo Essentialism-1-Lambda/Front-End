@@ -1,4 +1,11 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+import { userData } from '../DataStubs/data';
+import { ValuesIcon } from './ValuesIcon.jpg';
+// import ProjectList from './ProjectList';
+
+
+
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -11,6 +18,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,6 +40,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+
 export default function ValueCard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -44,23 +53,36 @@ export default function ValueCard() {
     setOpen(false);
   };
 
+
+
   return (
     <div>
-      <Button type="button" onClick={handleOpen}>
-        Family
-      </Button>
-      <Button type="button" onClick={handleOpen}>
-        Community
-      </Button>
-      <Button type="button" onClick={handleOpen}>
-        Health and Wellness
-      </Button>
-      <Button type="button" onClick={handleOpen}>
-        Environmental
-      </Button>
-      <Button type="button" onClick={handleOpen}>
-        Financial
-      </Button>
+        <div className="valueBtns">
+          {userData.values.map( values => {
+            return (
+              <Button type="button" onClick={handleOpen}>
+                {`${values.name}`}
+              </Button>
+            )
+          }
+          )}
+            {/* <Button type="button" onClick={handleOpen}>
+                Family
+            </Button>
+            <Button type="button" onClick={handleOpen}>
+                Community
+            </Button>
+            <Button type="button" onClick={handleOpen}>
+                Health and Wellness
+            </Button>
+            <Button type="button" onClick={handleOpen}>
+                Environmental
+            </Button>
+            <Button type="button" onClick={handleOpen}>
+                Financial
+            </Button> */}
+        </div>
+
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -79,33 +101,30 @@ export default function ValueCard() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  title="Contemplative Reptile"
+                  image={ValuesIcon}
+                  title="Values icon"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Value Title
+                      Value Title
+                    {/* ${userData.values} */}
                   </Typography>
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    {/* <AddProjectsForm />, <Projects /> */}
-                    List projects below title/scroll, with edit button/delete
-                    button and drop down for date and time spent on activity
+                    {/* <ProjectList projects={userData.projects}> */}
+
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Add Projects
-                  {/* make this a scroll module dialog form */}
-                </Button>
-                <Button size="small" color="primary">
-                  Dashboard - All Projects
-                </Button>
-              </CardActions>
+                <CardActions>
+
+                    <Button size="small" color="primary">
+                          View Dashboard
+                    </Button>
+                </CardActions>
             </Card>
             {/* <h2 id="transition-modal-title">Transition modal</h2>
             <p id="transition-modal-description">react-transition-group animates me.</p> */}
