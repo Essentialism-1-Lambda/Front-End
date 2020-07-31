@@ -18,8 +18,8 @@ export const Reflection = (props) => {
 					value={reflection}
 					margin='normal'
 					variant='outlined'
+					size='large'
 				/>
-				<input />
 			</form>
 		</>
 	);

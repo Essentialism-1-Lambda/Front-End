@@ -31,7 +31,7 @@ export const Header = () => {
               <a className="userlogin-link" href="https:/essentialism-1-lambda.github.io/Marketing/">
               About Us
               </a>
-              <Button type='submit' className="userlogin-link" onClick={logout}>
+              <Button color='primary' type='submit' onClick={logout}>
                 Log Out
             </Button>
             </div>

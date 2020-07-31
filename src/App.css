@@ -72,7 +72,6 @@ button {
   letter-spacing: 2px;
   outline: none;
   background-color: #555856;
-  background-image: linear-gradient(to right, #555857, #1c1d1b);
   color: #fff;
   cursor: pointer;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -89,7 +88,6 @@ button {
   letter-spacing: 2px;
   outline: none;
   background-color: #555856;
-  background-image: linear-gradient(to right, #555857, #1c1d1b);
   color: #fff;
   cursor: pointer;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -176,4 +174,5 @@ input#family {
   margin-left: -11%;
   padding-top: 20%;
 }
+
   

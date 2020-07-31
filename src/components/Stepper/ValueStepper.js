@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 //import { useParams } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withTheme } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	backButton: {
 		marginRight: theme.spacing(1),
+		
 	},
 	instructions: {
 		marginTop: theme.spacing(1),
@@ -33,7 +34,7 @@ function getSteps() {
 	return [
 		'Select your Values',
 		'Why are these values important to you?',
-		'Based on your introspection, narrow your choice to 3 values',
+		'Narrow your choice to 3 values.',
 	];
 }
 
@@ -140,22 +141,23 @@ export default function ValueStepper() {
 						<Typography className={classes.instructions}>
 							All steps completed
 						</Typography>
-						<Button onClick={handleSubmit}>Submit Values</Button>
-						<Button onClick={handleReset}>Try again?</Button>
+						<Button color='primary' onClick={handleSubmit}>Submit Values</Button>
+						<Button color='primary' onClick={handleReset}>Try again?</Button>
 					</div>
 				) : (
 					<div>
 						<Typography className={classes.instructions}>
 							{getStepContent(activeStep)}
 						</Typography>
-						<div>
+						<div> 
 							<Button
+			
 								disabled={activeStep === 0}
 								onClick={handleBack}
 								className={classes.backButton}>
 								Back
 							</Button>
-							<Button variant='contained' color='primary' onClick={handleNext}>
+							<Button variant='contained' onClick={handleNext}>
 								{activeStep === steps.length - 1 ? 'Finish' : 'Next'}
 							</Button>
 						</div>
