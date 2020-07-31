@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { userData } from '../DataStubs/data';
+import { userData } from '../DataStubs/data.js';
 import { ValuesIcon } from './ValuesIcon.jpg';
 // import ProjectList from './ProjectList';
 

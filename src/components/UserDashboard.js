@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
-import { userData } from '../DataStubs/data';
+import { userData } from '../DataStubs/data.js';
 
 
 import ValueCard from './ValueCard';

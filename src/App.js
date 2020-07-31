@@ -12,7 +12,7 @@ import UserDashboard from './components/UserDashboard';
 
 import {UserProvider} from './Context/UserContext';
 import {ValueProvider} from './Context/ValueContext';
-import {registerStub, values} from './DataStubs/data';
+import {registerStub, values} from './DataStubs/data.js';
 
 function App() {
   //const token = localStorage.getItem('token');
