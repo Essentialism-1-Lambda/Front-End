@@ -32,6 +32,7 @@ export const FinalValues = props => {
 					/>
 				</label>
 				<label htmlFor='financial'>
+					Financial
 					<input
 						type='checkbox'
 						id='financial'
@@ -39,9 +40,10 @@ export const FinalValues = props => {
 						checked={userValues.financial}
 						onChange={handleValueChange}
 					/>
-					Financial
+					
 				</label>
 				<label htmlFor='health'>
+					Health and Wellness
 					<input
 						type='checkbox'
 						id='health'
@@ -49,9 +51,10 @@ export const FinalValues = props => {
 						checked={userValues.health}
 						onChange={handleValueChange}
 					/>
-					Health and Wellness
+					
 				</label>
 				<label htmlFor='community'>
+					Community
 					<input
 						type='checkbox'
 						id='community'
@@ -59,9 +62,10 @@ export const FinalValues = props => {
 						checked={userValues.community}
 						onChange={handleValueChange}
 					/>
-					Community
+					
 				</label>
 				<label htmlFor='creativity'>
+					Creativity
 					<input
 						type='checkbox'
 						id='creativity'
@@ -69,9 +73,10 @@ export const FinalValues = props => {
 						checked={userValues.creativity}
 						onChange={handleValueChange}
 					/>
-					Creativity
+					
 				</label>
 				<label htmlFor='positivity'>
+					Positivity
 					<input
 						type='checkbox'
 						id='positivity'
@@ -79,9 +84,10 @@ export const FinalValues = props => {
 						checked={userValues.positivity}
 						onChange={handleValueChange}
 					/>
-					Positivity
+					
 				</label>
 				<label htmlFor='efficiency'>
+					Efficiency
 					<input
 						type='checkbox'
 						id='efficiency'
@@ -89,9 +95,10 @@ export const FinalValues = props => {
 						checked={userValues.efficiency}
 						onChange={handleValueChange}
 					/>
-					Efficiency
+					
 				</label>
 				<label htmlFor='loyalty'>
+					Loyalty
 					<input
 						type='checkbox'
 						id='loyalty'
@@ -99,9 +106,10 @@ export const FinalValues = props => {
 						checked={userValues.loyalty}
 						onChange={handleValueChange}
 					/>
-					Loyalty
+					
 				</label>
 				<label htmlFor='spirituality'>
+					Spirituality
 					<input
 						type='checkbox'
 						id='spirituality'
@@ -109,7 +117,7 @@ export const FinalValues = props => {
 						checked={userValues.spirituality}
 						onChange={handleValueChange}
 					/>
-					Spirituality
+					
 				</label>
 			</div>
 		</form>
