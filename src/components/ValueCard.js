@@ -58,6 +58,8 @@ export default function ValueCard() {
   return (
     <div>
         <div className="valueBtns">
+            
+            
             <Button type="button" onClick={handleOpen}>
                 Family
             </Button>
@@ -93,7 +95,7 @@ export default function ValueCard() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="./ValuesIcon"
+                  image={ValuesIcon}
                   title="Values icon"
                 />
                 <CardContent>
