@@ -53,14 +53,20 @@ export default function ValueCard() {
     setOpen(false);
   };
 
-  
+
 
   return (
     <div>
         <div className="valueBtns">
-            
-            
-            <Button type="button" onClick={handleOpen}>
+          {userData.values.map( values => {
+            return (
+              <Button type="button" onClick={handleOpen}>
+                {`${values.name}`}
+              </Button>
+            )
+          }
+          )}
+            {/* <Button type="button" onClick={handleOpen}>
                 Family
             </Button>
             <Button type="button" onClick={handleOpen}>
@@ -74,7 +80,7 @@ export default function ValueCard() {
             </Button>
             <Button type="button" onClick={handleOpen}>
                 Financial
-            </Button>
+            </Button> */}
         </div>
 
       <Modal
@@ -114,7 +120,7 @@ export default function ValueCard() {
                 </CardContent>
               </CardActionArea>
                 <CardActions>
-                    
+
                     <Button size="small" color="primary">
                           View Dashboard
                     </Button>

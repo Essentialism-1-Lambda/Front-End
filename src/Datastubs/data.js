@@ -8,29 +8,69 @@ export const registerStub = {
     projects: [],
     topValues: {},
   };
-  
+
   export const userData = {
     id: 99,
     name: 'Jane Doe',
     email: 'test@test.com',
-    values: [1,2,4,5,6,10],
+    values: [
+      {
+      id: 1,
+      name: 'family'
+      },
+      {
+        id: 2,
+        name: 'environmental',
+      },
+      {
+        id: 4,
+        name: 'health',
+      },
+      {
+        id: 5,
+        name: 'community',
+      },
+      {
+        id: 6,
+        name: 'creativity',
+      },
+      {
+        id: 10,
+        name: 'spirituality'
+      }],
     projects: [
       {
         name: 'Make stubs',
         desc: 'Make stubs while waiting for the backend',
         time: '',
-        values: [1]
+        values: [
+          {
+          id: 1,
+          name: 'family'
+          }
+        ]
       }
     ],
     topValues: {
-      1: 1,
-      2: 2,
-      3: 6
+      1: {
+        id: 1,
+        name: 'family',
+      },
+      2:
+      {
+        id: 2,
+        name: 'environmental',
+      },
+      3:
+      {
+        id: 6,
+        name: 'creativity',
+      }
     }
   };
-  
-  
-  export const valuesStub = [
+
+
+  export const values = [
     {
       id: 1,
       name: 'family',
