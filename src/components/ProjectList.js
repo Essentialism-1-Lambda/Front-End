@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
-import { userData } from '../DataStubs/data';
+import { userData, projectEx } from '../DataStubs/data';
 import "../index.css";
+
+// import React, { UseContext } from 'react';
+// import { UserContext, ProjectContext } from '../Context/ProjectContext';
 
 
 // Users
@@ -23,13 +26,16 @@ import "../index.css";
 
 
 const ProjectList = () => {
+  // const user = useContext(UserContext);
+
     const { push } = useHistory();
+    
     const [listState, setListState] =useState([]);
 
     const deleteProject = e => {
         e.preventDefault();
         axiosWithAuth()
-          .delete(`https://essentialism-bw.herokuapp.com/api/user/${id}/projects/${project.id}`)
+          .delete(`users/${id}/projects/${project.id}`)
             .then(response => {
                 console.log('deleted project', response);
                 setListState(listState.filter(item => `${userData.projects.name}` !== userData.projects.name));

@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
 import { userData } from '../DataStubs/data';
-
+// import { UserContext } from '../Context/UserContext';
+// import { ValueContext } from '../Context/ValueContext';
 
 import ValueCard from './ValueCard';
 // import ProjectList from './ProjectList';
@@ -11,8 +12,11 @@ import ValueCard from './ValueCard';
     // api will be used to pull and render user information, or we can store it into a usercontext
     // will be a private route, along with onboarding
 
-export default function UserDashboard() {
+export default function UserDashboard(props) {
     const [user, setUser] = useState(userData);
+    // const user = useContext(UserContext);
+    // const values = useContext(ValueContext);
+
     // const [project, setProject] = useState([]);
     const [values, setValues ] = useState(userData);
 
@@ -31,7 +35,9 @@ export default function UserDashboard() {
     return (
         <div className="dashboard-container">
             <div className="dashboard-welcome">
-                Welcome <span><b>{`${user.name}`}</b></span>, view your values and add or delete your projects
+                <h2>
+                    Welcome <strong>{`${user.name}`}</strong>, view your values and add or delete your projects
+                </h2>
             </div>
             <div className="dashboard-values">
                 <ValueCard

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
+
+
 import * as yup from 'yup';
-import { axiosWithAuth } from '../../utils/AxiosWithAuth';
+// import { axiosWithAuth } from '../../utils/AxiosWithAuth';
 import { EditProject } from './EditProject';
 
 
@@ -15,12 +18,12 @@ const formSchema = yup.object().shape({
   });
 
 const Projects = () => {
+  
   const [formState, setFormState] = useState({
     name: '',
     desc: '',
     time: '',
     values: '',
-  
   });
 
   const [buttonDisabled, setButtonDisabled] = useState(true);
@@ -120,10 +123,10 @@ const Projects = () => {
                     </label>
                     <label htmlFor='time' className='timeDropdown'>
                         <select value={formState.time} onChange={inputChange}>
-                            <option value="thirty">Less than 30 min</option>
-                            <option value="oneHour">Less than 1 hr</option>
-                            <option value="twoHours">less than 2 hrs</option>
-                            <option value="fourHours">More than 4 hrs</option>
+                            <option value="1">Less than 30 min</option>
+                            <option value="2">Less than 1 hr</option>
+                            <option value="3">less than 2 hrs</option>
+                            <option value="4">More than 4 hrs</option>
                         </select>
                     </label>
                 </div>

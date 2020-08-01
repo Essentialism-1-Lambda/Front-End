@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import { userData } from '../DataStubs/data';
-import { ValuesIcon } from './ValuesIcon.jpg';
+import { userData, values } from '../DataStubs/data';
+import ValuesIcon from './ValuesIcon.jpg';
 // import ProjectList from './ProjectList';
 
 
@@ -42,6 +41,8 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function ValueCard() {
+
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -99,22 +100,39 @@ export default function ValueCard() {
           <div className={classes.paper}>
             <Card className={classes.root}>
               <CardActionArea>
+
                 <CardMedia
                   className={classes.media}
                   image={ValuesIcon}
                   title="Values icon"
                 />
+
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                      Value Title
-                    {/* ${userData.values} */}
+                  {/* Value Title */}
+                   {/* {`${values.name}`} */}
+
+                   {userData.values.id.map( values => {
+                       return (
+                        `${values.name}`
+                       )})
+                    }
+
                   </Typography>
+
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    {/* <ProjectList projects={userData.projects}> */}
+                    {/* value description */}
+                    {/* {`${values.desc}`} */}
+
+                    {userData.values.id.map( values => {
+                       return (
+                        `${values.desc}`
+                       )})
+                    }
 
                   </Typography>
                 </CardContent>
