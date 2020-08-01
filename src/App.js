@@ -44,9 +44,9 @@ function App() {
 					<PrivateRoute path='/onboarding' component={ValueStepper} />
         </ValueProvider>
 
-		<ProjProvider value={{project, setProject}}>
+		{/* <ProjProvider value={{project, setProject}}>
 
-		</ProjProvider>
+		</ProjProvider> */}
 					<Route path='/register' component={Register} />
 					<Route path='/login' component={UserLogin} />
 					<Route exact path='/' component={Home} />
