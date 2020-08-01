@@ -45,9 +45,16 @@ export default function ValueCard() {
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [valueId, setValueId] = React.useState({
+    id: 2,
+    name: '',
+    desc: '',
+  })
 
-  const handleOpen = () => {
+  const handleOpen = (obj) => {
     setOpen(true);
+    setValueId(obj);
+    // set state to values.id
   };
 
   const handleClose = () => {
@@ -61,7 +68,7 @@ export default function ValueCard() {
         <div className="valueBtns">
           {userData.values.map( values => {
             return (
-              <Button type="button" onClick={handleOpen}>
+              <Button type="button" onClick={() => {handleOpen(values)}}>
                 {`${values.name}`}
               </Button>
             )
@@ -112,11 +119,8 @@ export default function ValueCard() {
                   {/* Value Title */}
                    {/* {`${values.name}`} */}
 
-                   {userData.values.id.map( values => {
-                       return (
-                        `${values.name}`
-                       )})
-                    }
+                        <h3>{`${valueId.name}`} </h3>
+                    
 
                   </Typography>
 
@@ -128,11 +132,11 @@ export default function ValueCard() {
                     {/* value description */}
                     {/* {`${values.desc}`} */}
 
-                    {userData.values.map( values => {
+                    {/* {values.map( values => {
                        return (
-                        `${values.desc}`
+                        <h4>{`${values.desc}`}</h4>
                        )})
-                    }
+                    } */}
 
                   </Typography>
                 </CardContent>

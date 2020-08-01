@@ -36,7 +36,7 @@ export default function UserDashboard(props) {
         <div className="dashboard-container">
             <div className="dashboard-welcome">
                 <h2>
-                    Welcome <strong>{`${user.name}`}</strong>, view your values and add or delete your projects
+                    Welcome <span><u>{`${user.name}`}</u></span>, view your values and add or delete your projects
                 </h2>
             </div>
             <div className="dashboard-values">
