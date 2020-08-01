@@ -51,11 +51,13 @@ export default function UserDashboard(props) {
 
             <div className="dashboard-bot">
                 <div className="dashboard-add-projects">
+                    <h3>Project form here</h3>
                     {/* <ProjectForm 
                         projects={projects}
                         userProjects={user.projects} /> */}
                 </div>
                 <div className="dashboard-projects">
+                    <h3>Project list here</h3>
                     {/* <ProjectList projects={user.projects} /> */}
                 </div>
             </div>
