@@ -128,7 +128,7 @@ export default function ValueCard() {
                     {/* value description */}
                     {/* {`${values.desc}`} */}
 
-                    {userData.values.id.map( values => {
+                    {userData.values.map( values => {
                        return (
                         `${values.desc}`
                        )})
