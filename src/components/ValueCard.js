@@ -1,5 +1,5 @@
 import React from "react";
-import { userData, values } from '../DataStubs/data';
+import { userData } from '../DataStubs/data';
 import ValuesIcon from './ValuesIcon.jpg';
 // import ProjectList from './ProjectList';
 
@@ -116,35 +116,24 @@ export default function ValueCard() {
 
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                  {/* Value Title */}
-                   {/* {`${values.name}`} */}
-
-                        <h3>{`${valueId.name}`} </h3>
-                    
-
-                  </Typography>
+                        <h3> {`${valueId.name}`} </h3>
+                 </Typography>
 
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    {/* value description */}
-                    {/* {`${values.desc}`} */}
-
-                    {/* {values.map( values => {
-                       return (
-                        <h4>{`${values.desc}`}</h4>
-                       )})
-                    } */}
-
+                        <h4> {`${valueId.desc}`} </h4>
                   </Typography>
                 </CardContent>
               </CardActionArea>
                 <CardActions>
-
                     <Button size="small" color="primary">
                           View Dashboard
+                    </Button>
+                    <Button size="small" color="primary">
+                          View Projects
                     </Button>
                 </CardActions>
             </Card>

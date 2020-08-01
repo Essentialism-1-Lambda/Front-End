@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState } from 'react';
+// import React, { useState, useEffect } from 'react';
 
 
 import * as yup from 'yup';
 // import { axiosWithAuth } from '../../utils/AxiosWithAuth';
-import { EditProject } from './EditProject';
+// import { EditProject } from './EditProject';
 
 
 
@@ -26,7 +26,7 @@ const Projects = () => {
     values: '',
   });
 
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+  // const [buttonDisabled, setButtonDisabled] = useState(true);
   const [post, setPost] = useState([]);
   const [errorState, setErrorState] = useState({
     name: '',
@@ -70,13 +70,13 @@ const Projects = () => {
     setFormState({ ...formState, [e.target.name]: value });
   };
 
-  const formSubmit = async () => {
+  const formSubmit = async (e) => {
     e.preventDefault();
     console.log('Project form submitted!');
-    history.push("/Projects")
+    // history.push("/Projects")
   }
     // axiosWithAuth()
-    //   .post(`https://essentialism-bw.herokuapp.com/api/users/${id}/projects/${project.id}`, formState)
+    //   .post(`/users/${id}/projects/${project.id}`, formState)
     //   .then(response => {
     //     console.log(response)
     //     setPost(response.data);
@@ -97,14 +97,15 @@ const Projects = () => {
                 <p  className='intake-header'>
                     Record your projects. 
                 </p>
-                <div className='form-style'>
-                    <label htmlFor='name' className='projectName'>
+                <div className='projectFormDiv'>
+                    <label htmlFor='name'>
+                        Project name: 
                         <input 
                             type='text' 
                             name='name' 
                             id='name'
                             placeholder='Project Name'
-                            value={formState.project}
+                            value={formState.name}
                             onChange={inputChange} 
                         />
                     </label>
@@ -122,6 +123,7 @@ const Projects = () => {
                         />
                     </label>
                     <label htmlFor='time' className='timeDropdown'>
+                        Time you would like to spend daily on your goal/project:
                         <select value={formState.time} onChange={inputChange}>
                             <option value="1">Less than 30 min</option>
                             <option value="2">Less than 1 hr</option>
@@ -132,8 +134,9 @@ const Projects = () => {
                 </div>
                 <pre>{JSON.stringify(post, null, 2)}</pre>
                 
-                <button disabled={buttonDisabled}>Add Project</button>
-                <button onClick={EditProject}>Edit Project</button>
+                {/* <button disabled={buttonDisabled}>Add Project</button> */}
+                <button onClick={formSubmit}>Add Project</button>
+                {/* <button onClick={EditProject}>Edit Project</button> */}
             </form>
     </div>
   )
