@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {useHistory} from 'react-router-dom';
 import * as yup from 'yup';
 import axios from 'axios';
 
@@ -13,6 +14,7 @@ const formSchema = yup.object().shape({
 });
 
 const UserLogin = () => {
+	const history = useHistory();
 	// state to hold data for form inputs
 	const [formState, setFormState] = useState({
 		email: '',
@@ -76,7 +78,9 @@ const UserLogin = () => {
 	// POSTs data to server
 	const formSubmit = (e) => {
 		e.preventDefault();
+		localStorage.setItem('token', 'registerStub');
 		console.log('form submitted!');
+		history.push('/onboarding');
 		console.log(formState);
 
 		axios
@@ -84,7 +88,6 @@ const UserLogin = () => {
 			.then((response) => {
 				console.log(response);
 				// setPost(response.data);
-
 				// reset form if successful
 				setFormState({
 					email: '',

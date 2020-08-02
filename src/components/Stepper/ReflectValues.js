@@ -2,10 +2,13 @@ import React from 'react';
 import { TextField } from '@material-ui/core';
 
 export const Reflection = (props) => {
-  const {
-      handleReflectChange,
-      reflection,
-    } = props;
+
+	const {reflection, setReflection} = props;
+	console.log(props.reflection);
+
+	const handleChange = e => {
+    setReflection(e.target.value)
+	};
 
 	return (
 		<>
@@ -14,7 +17,9 @@ export const Reflection = (props) => {
 				<TextField
 					placeholder='Enter your Answer'
 					label='reflection'
-					onChange={handleReflectChange}
+					id='reflection'
+					name='reflection'
+					onChange={handleChange}
 					value={reflection}
 					margin='normal'
 					variant='outlined'

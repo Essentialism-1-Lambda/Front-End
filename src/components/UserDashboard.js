@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
 import { userData } from '../DataStubs/data.js';
+import {UserConsumer} from '../Context/UserContext';
+import {useHistory} from 'react-router-dom';
 
 
 import ValueCard from './ValueCard';
@@ -15,6 +17,7 @@ export default function UserDashboard() {
     const [user, setUser] = useState(userData);
     // const [project, setProject] = useState([]);
     const [values, setValues ] = useState(userData);
+    const history = useHistory();
 
     useEffect(() => {
         axiosWithAuth()
@@ -26,9 +29,21 @@ export default function UserDashboard() {
           )
           .catch(err => console.log(err));
           console.log("this is user from API", user);
-    }, [])
+    }, [user])
 
     return (
+        <>
+        <UserConsumer>
+				{(user) => {
+					if (user !== null) {
+						if (user.values && user.values.length === 0) {
+							history.push('/onboarding');
+						} else {
+							history.push('/dashboard');
+						}
+					}
+				}}
+		</UserConsumer>
         <div className="dashboard-container">
             <div className="dashboard-welcome">
                 Welcome <span><b>{`${user.name}`}</b></span>, view your values and add or delete your projects
@@ -48,6 +63,7 @@ export default function UserDashboard() {
             </div>
 
         </div>
+        </>
     )
 }
 

@@ -12,16 +12,33 @@ import UserDashboard from './components/UserDashboard';
 
 import {UserProvider} from './Context/UserContext';
 import {ValueProvider} from './Context/ValueContext';
-import {registerStub, values} from './DataStubs/data.js';
+import {registerStub, onboardedUserStub, values, userData} from './DataStubs/data';
 
 function App() {
-  //const token = localStorage.getItem('token');
+  const token = localStorage.getItem('token');
 	//const [isAuth, setAuth] = useState(token !== '' ? token : null);
-	const [isAuth, setAuth] = useState(
-		registerStub !== null ? registerStub : null
-	);
+	const setCorrectUser = (tokenVal) => {
+		switch(tokenVal) {
+			case 'registerStub':
+				return registerStub;
+			case 'onboardedUserStub':
+				return onboardedUserStub;
+			case 'completeUserStub':
+				return userData;
+			default:
+				return null;
+		}
+	}
+
+	// To Simulate API response for login
+	const [isAuth, setAuth] = useState(setCorrectUser(token));
+	const [user, setUser] = useState(setCorrectUser(token));
+	console.log(user);
+	// const [isAuth, setAuth] = useState(
+	// 	registerStub !== null ? registerStub : null
+	// );
 	//const [user, setUser] = useState(getUserFromToken(token));
-  const [user, setUser] = useState(registerStub);
+  // const [user, setUser] = useState(registerStub);
   const [value, setValue] = useState(values);
 
   const handleValueChange = (input) => (event) =>
@@ -39,11 +56,11 @@ function App() {
         <ValueProvider value={{value, handleValueChange}} >
 					<PrivateRoute path='/onboarding' component={ValueStepper} />
         </ValueProvider>
+				</UserProvider>
+				</Switch>
 					<Route path='/register' component={Register} />
 					<Route path='/login' component={UserLogin} />
 					<Route exact path='/' component={Home} />
-				</UserProvider>
-			</Switch>
 		</div>
 	);
 }
