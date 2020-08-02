@@ -28,9 +28,9 @@ export const Header = () => {
               <Link className="userlogin-link" to={"/onboarding"}>
                 Change Values
               </Link>
-              <a className="userlogin-link" href="https:/essentialism-1-lambda.github.io/Marketing/">
+              <Link className="userlogin-link" to={{ pathname: "https:/essentialism-1-lambda.github.io/Marketing/" }} target="_blank">
               About Us
-              </a>
+              </Link>
               <Button color='primary' type='submit' onClick={logout}>
                 Log Out
             </Button>
@@ -45,9 +45,9 @@ export const Header = () => {
             <Link className="userlogin-link" to={"/login"}>
               Login
             </Link>
-            <a className="userlogin-link" href="https:/essentialism-1-lambda.github.io/Marketing/">
+            <Link className="userlogin-link" to={{ pathname: "https:/essentialism-1-lambda.github.io/Marketing/" }} target="_blank">
               About Us
-            </a>
+            </Link>
           </section>
         )}
     </div>
