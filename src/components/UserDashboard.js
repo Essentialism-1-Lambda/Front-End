@@ -26,7 +26,7 @@ export default function UserDashboard() {
           )
           .catch(err => console.log(err));
           console.log("this is user from API", user);
-    }, [])
+    }, [setUser, user])
 
     return (
         <div className="dashboard-container">

@@ -7,7 +7,8 @@ export const FinalValues = props => {
 
   return (
     <>
-      <h2>{`Your Introspection: ${reflection}`}</h2>
+      <h2>{'Based on your introspection, narrow your choices down to 3 values.'}</h2>
+			<h3>{`Your Introspection: ${reflection}`}</h3>
       <br />
       <form>
 			<div>
@@ -40,7 +41,7 @@ export const FinalValues = props => {
 						checked={userValues.financial}
 						onChange={handleValueChange}
 					/>
-					
+
 				</label>
 				<label htmlFor='health'>
 					Health and Wellness
@@ -51,7 +52,7 @@ export const FinalValues = props => {
 						checked={userValues.health}
 						onChange={handleValueChange}
 					/>
-					
+
 				</label>
 				<label htmlFor='community'>
 					Community
@@ -62,7 +63,7 @@ export const FinalValues = props => {
 						checked={userValues.community}
 						onChange={handleValueChange}
 					/>
-					
+
 				</label>
 				<label htmlFor='creativity'>
 					Creativity
@@ -73,7 +74,7 @@ export const FinalValues = props => {
 						checked={userValues.creativity}
 						onChange={handleValueChange}
 					/>
-					
+
 				</label>
 				<label htmlFor='positivity'>
 					Positivity
@@ -84,7 +85,7 @@ export const FinalValues = props => {
 						checked={userValues.positivity}
 						onChange={handleValueChange}
 					/>
-					
+
 				</label>
 				<label htmlFor='efficiency'>
 					Efficiency
@@ -95,7 +96,7 @@ export const FinalValues = props => {
 						checked={userValues.efficiency}
 						onChange={handleValueChange}
 					/>
-					
+
 				</label>
 				<label htmlFor='loyalty'>
 					Loyalty
@@ -106,7 +107,7 @@ export const FinalValues = props => {
 						checked={userValues.loyalty}
 						onChange={handleValueChange}
 					/>
-					
+
 				</label>
 				<label htmlFor='spirituality'>
 					Spirituality
@@ -117,7 +118,7 @@ export const FinalValues = props => {
 						checked={userValues.spirituality}
 						onChange={handleValueChange}
 					/>
-					
+
 				</label>
 			</div>
 		</form>

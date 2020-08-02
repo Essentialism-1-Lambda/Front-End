@@ -1,24 +1,10 @@
 
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { UserConsumer } from '../Context/UserContext';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
-	const history = useHistory();
-
 	return (
 		<>
-			<UserConsumer>
-				{(user) => {
-					if (user !== null) {
-						if (user.values && user.values.length === 0) {
-							history.push('/onboarding');
-						} else {
-							history.push('/dashboard');
-						}
-					}
-				}}
-			</UserConsumer>
 			<div className='home'>
 				<header className='App-header'>
 					<h1>Live Happier with Essentialism.</h1>

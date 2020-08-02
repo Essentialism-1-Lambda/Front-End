@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 //import { useParams } from 'react-router-dom';
-import { makeStyles, withTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 	backButton: {
 		marginRight: theme.spacing(1),
-		
 	},
 	instructions: {
 		marginTop: theme.spacing(1),
@@ -46,7 +45,7 @@ export default function ValueStepper() {
 	// const id = useParams();
 	const history = useHistory();
 	const {user} = useContext(UserContext);
-	const [reflection, setReflection] = useState('');
+	const [reflection, setReflection] = useState();
 	const {values, handleValueChange, setUser} = useContext(ValueContext);
 
 	const getStepContent = (stepIndex) => {
@@ -67,7 +66,7 @@ export default function ValueStepper() {
 				return (
 					<>
             <Reflection
-            handleReflectChange={handleReflectChange}
+            setReflection={setReflection}
             reflection={reflection}
             />
 					</>
@@ -100,13 +99,6 @@ export default function ValueStepper() {
 	const handleReset = () => {
 		setActiveStep(0);
   };
-
-  const handleReflectChange = (input) => (event) =>
-  setReflection({
-			...reflection,
-			[input]: event.target.value,
-		}
-);
 
 
 	// const handleSubmit = async () => {
@@ -149,9 +141,8 @@ export default function ValueStepper() {
 						<Typography className={classes.instructions}>
 							{getStepContent(activeStep)}
 						</Typography>
-						<div> 
+						<div>
 							<Button
-			
 								disabled={activeStep === 0}
 								onClick={handleBack}
 								className={classes.backButton}>

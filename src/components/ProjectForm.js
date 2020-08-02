@@ -20,7 +20,6 @@ const Projects = () => {
     desc: '',
     time: '',
     values: '',
-  
   });
 
   const [buttonDisabled, setButtonDisabled] = useState(true);
@@ -36,10 +35,10 @@ const Projects = () => {
   //   formSchema.isValid(formState).then(valid => {
   //       setButtonDisabled(!valid);
   //   }), [formState]});
-  
+
     const validateChange = (e) => {
     let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    
+
     yup
       .reach(formSchema, e.target.name)
       .validate(value)
@@ -62,7 +61,7 @@ const Projects = () => {
   const inputChange = e => {
     e.persist();
     validateChange(e)
-    let value = 
+    let value =
         e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setFormState({ ...formState, [e.target.name]: value });
   };
@@ -92,17 +91,17 @@ const Projects = () => {
     <div className='project-body'>
         <form onSubmit={formSubmit}>
                 <p  className='intake-header'>
-                    Record your projects. 
+                    Record your projects.
                 </p>
                 <div className='form-style'>
                     <label htmlFor='name' className='projectName'>
-                        <input 
-                            type='text' 
-                            name='name' 
+                        <input
+                            type='text'
+                            name='name'
                             id='name'
                             placeholder='Project Name'
                             value={formState.project}
-                            onChange={inputChange} 
+                            onChange={inputChange}
                         />
                     </label>
                         {errorState.project.length > 0 ? (
@@ -110,12 +109,12 @@ const Projects = () => {
                         ) : null}
                     <label htmlFor='desc' className='descText'>
                         Describe the project you're working on:
-                        <textarea 
-                            name='desc' 
-                            id='desc' 
+                        <textarea
+                            name='desc'
+                            id='desc'
                             placeholder='Describe'
                             value={formState.desc}
-                            onChange={inputChange} 
+                            onChange={inputChange}
                         />
                     </label>
                     <label htmlFor='time' className='timeDropdown'>
@@ -128,7 +127,7 @@ const Projects = () => {
                     </label>
                 </div>
                 <pre>{JSON.stringify(post, null, 2)}</pre>
-                
+
                 <button disabled={buttonDisabled}>Add Project</button>
                 <button onClick={EditProject}>Edit Project</button>
             </form>

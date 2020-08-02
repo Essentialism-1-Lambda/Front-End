@@ -83,8 +83,8 @@ const Register = () => {
     axiosWithAuth()
       .post('/register', formState)
       .then(response => {
-
         console.log(response);
+        localStorage.setItem('token', 'registerStub');
         // setPost(response.data);
         // reset form if successful
         setFormState({
