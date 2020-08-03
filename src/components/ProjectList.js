@@ -1,4 +1,4 @@
-// import React, {  useState, useEffect } from "react";
+// import React, { useContext, useState, useEffect } from "react";
 import React, { useState } from 'react';
 // import { axiosWithAuth } from '../utils/AxiosWithAuth';
 import { userData } from '../DataStubs/data';
@@ -19,8 +19,8 @@ export default function ProjectList() {
     // const {user} = useContext(UserContext);
     
     // const [list, setListState] = useState([]);
-    const [projectList] = useState(userData.projects);
 
+    const [project] = useState(userData.projects);
     // const deleteProject = project => {
     //     axiosWithAuth()
     //       .delete(`users/${id}/projects/${project.id}`)
@@ -34,9 +34,9 @@ export default function ProjectList() {
     // useEffect(() => {
     //     axiosWithAuth()
     //         .get(`users/${id}/projects`)
-    //         .then(res => {
-    //           console.log('project list', res);
-    //           setListState(res.data);
+    //         .then(response => {
+    //           console.log('project list', response);
+    //           setListState(response.data);
     //           // push("/Projects")
     //     })
     //     .catch(err => console.log(err));
@@ -47,15 +47,14 @@ export default function ProjectList() {
     return(
         <div className="project-list-div">
             <div className="project-container">
-                {
-                  projectList.map( (project, i) => {
+                {project.map( (project, i) => {
                     return(
                       <div className='project' key={i}>
                         <p>-------------------------------------------------</p>
-                        <p>Project: {projectList.name}</p>
-                        <p>desc: {projectList.desc}</p>
-                        <p>time: {projectList.time}</p>
-                        <p>value: {projectList.values}</p>
+                        <p>Project: {project.name}</p>
+                        <p>desc: {project.desc}</p>
+                        <p>time: {project.time}</p>
+                        <p>value: {project.values}</p>
                           <button className="delete-proj-btn">
                           {/* <button className="delete-prop-btn" onClick={() => deleteProject(project)}> */}
                             Delete

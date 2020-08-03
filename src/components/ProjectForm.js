@@ -60,7 +60,7 @@ const Projects = () => {
 
   const inputChange = e => {
     e.persist();
-    validateChange(e)
+    validateChange(e);
     let value =
         e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setFormState({ ...formState, [e.target.name]: value });
@@ -69,6 +69,12 @@ const Projects = () => {
   const formSubmit = async (e) => {
     e.preventDefault();
     console.log('Project form submitted!');
+      // setFormState({
+      //   name: '',
+      //   desc: '',
+      //   time: '',
+      //   values: '',
+      // })
   //   history.push("/Projects")
   }
     // axiosWithAuth()

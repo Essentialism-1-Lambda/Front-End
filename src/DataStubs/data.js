@@ -89,13 +89,13 @@ export const userData = {
       {
         name: 'Make stubs',
         desc: 'Make stubs while waiting for the backend',
-        time: '1',
+        time: 'Less than 1 hour',
         values: 'community',
       },
       {
         name: 'Gardening to improve home environment',
         desc: 'My goal is to have a full-functioning garden within a year. I would like to start with growing herbs like Oregano, thyme and mint.',
-        time: 2,
+        time: 'Less than 2 hours',
         values: 'environmental',
       },
   ],
