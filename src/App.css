@@ -251,3 +251,8 @@ input#family {
   padding: 100px;
   margin: auto;
 }
+
+.timeDropdown select {
+  width: 100%;
+}
+  

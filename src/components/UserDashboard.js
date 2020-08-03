@@ -6,7 +6,7 @@ import { userData } from '../DataStubs/data.js';
 
 import ValueCard from './ValueCard';
 import ProjectList from './ProjectList';
-// import ProjectForm from './ProjectForm';
+import ProjectForm from './ProjectForm';
 // import EditProject from './EditProject';
 
     // api will be used to pull and render user information, or we can store it into a usercontext
@@ -54,14 +54,14 @@ export default function UserDashboard() {
                 
             <div className="dashboard-bot">
                 <div className="dashboard-add-projects">
-                    <h3>Project form here</h3>
-                    {/* <ProjectForm 
-                        projects={projects}
-                        userProjects={user.projects} /> */}
+                    <h3>Daily Project/Goal Reflection Below</h3>
+                    <ProjectForm 
+                        // projects={projects}
+                        userProjects={user.projects} />
                 </div>
                 <br />
                 <div className="dashboard-projects">
-                    <h2>Your Projects are Listed Below </h2>
+                    <h3>Your Goals && Projects are Listed Below </h3>
                     <ProjectList projects={user.projects} />
                 </div>
             </div>

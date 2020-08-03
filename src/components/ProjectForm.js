@@ -31,10 +31,10 @@ const Projects = () => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [post, setPost] = useState([]);
  
-  useEffect(() => {
-    formSchema.isValid(formState).then(valid => {
-        setButtonDisabled(!valid);
-    }), [formState]});
+  // useEffect(() => {
+  //   formSchema.isValid(formState).then(valid => {
+  //       setButtonDisabled(!valid);
+  //   }), [formState]});
 
     const validateChange = (e) => {
     let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -66,10 +66,10 @@ const Projects = () => {
     setFormState({ ...formState, [e.target.name]: value });
   };
 
-  const formSubmit = async () => {
+  const formSubmit = async (e) => {
     e.preventDefault();
     console.log('Project form submitted!');
-    history.push("/Projects")
+  //   history.push("/Projects")
   }
     // axiosWithAuth()
     //   .post(`/users/${id}/projects/${project.id}`, formState)
@@ -109,7 +109,7 @@ const Projects = () => {
                         <p className='error'>{errorState.name}</p>
                         ) : null}
                     <label htmlFor='desc' className='descText'>
-                        Describe the project you're working on:
+                        Describe the project you're working on and record your reflections:
                         <textarea
                             name='desc'
                             id='desc'
@@ -119,6 +119,7 @@ const Projects = () => {
                         />
                     </label>
                     <label htmlFor='time' className='timeDropdown'>
+                      Time spent on this project daily:
                         <select value={formState.time} onChange={inputChange}>
                             <option value="thirty">Less than 30 min</option>
                             <option value="oneHour">Less than 1 hr</option>
