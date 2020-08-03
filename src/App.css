@@ -192,11 +192,75 @@ input#family {
   padding-top: 20%;
 }
 
+
   
 .dashboard-container {
   display: flex;
   justify-content: center;
+  font-family: 'Montserrat';
   margin-top: 40px;
   width: 100%;
   padding: 20px;
+}
+
+.dashboard-top{
+  /* position:relative; */
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  /* /* flex-direction: row; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center;
+  margin-top: auto; */
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+}
+
+.dashboard-welcome {
+  flex: 1;
+  padding: 10px;
+  width: 20%;
+}
+
+.dashboard-values {
+  flex: 2;
+  /* padding: 5px; */
+  width: 65%;
+}
+
+.dashboard-bot{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  /* /* flex-direction: row; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center;
+  margin-top: auto; */
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+}
+
+
+
+.dashboard-add-projects {
+  border: 3px solid darkgray;
+  border-radius: 5px;
+  outline: none;
+ 
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  padding: 100px;
+  margin: auto;
+}
+
+
+.dashboard-projects {
+  padding: 100px;
+  border: 3px solid darkgray;
+  margin: auto;
+
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  padding: 100px;
+  margin: auto;
 }
