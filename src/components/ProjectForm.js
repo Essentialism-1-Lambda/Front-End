@@ -130,7 +130,7 @@ const Projects = () => {
                 </div>
                 <pre>{JSON.stringify(post, null, 2)}</pre>
 
-                <button disabled={buttonDisabled}>Add Project</button>
+                <button disabled={buttonDisabled} className="proj-form-btn">Add Project</button>
                 {/* <button onClick={EditProject}>Edit Project</button> */}
             </form>
     </div>

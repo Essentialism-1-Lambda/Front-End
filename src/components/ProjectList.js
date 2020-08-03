@@ -81,7 +81,7 @@ export default function ProjectList(userData) {
                         <p>desc: {userData.projects.desc}</p>
                         <p>time: {userData.projects.time}</p>
                         <p>values: {userData.projects.values}</p>
-                          <button className="delete-btn">
+                          <button className="delete-proj-btn">
                             Delete
                           </button>
                       </div>
