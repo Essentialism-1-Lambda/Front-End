@@ -3,6 +3,11 @@ import { axiosWithAuth } from '../utils/AxiosWithAuth';
 import { userData } from '../DataStubs/data';
 import "../index.css";
 
+// if context were used vs dummy data
+// import React, { UseContext } from 'react';
+// import { ProjectContext } from '../Context/ProjectContext';
+// import { UserContext } from '../Context/UserContext';
+    // const ProjConsumer = ProjContext.Consumer;
 
 // Users
 // GET /api/users
