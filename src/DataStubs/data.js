@@ -55,35 +55,49 @@ export const userData = {
   name: 'Test User',
   email: 'test@test.com',
   values: [{
-    id: 1,
-    name: 'family',
-  },
-  {
-    id: 2,
-    name: 'environmental',
-  },
-  {
-    id: 4,
-    name: 'health',
-  },
-  {
-    id: 5,
-    name: 'community',
-  },
-  {
-    id: 6,
-    name: 'creativity',
-  },
-  {
-    id: 10,
-    name: 'spirituality'
+      id: 1,
+      name: 'family',
+      desc: 'Family values - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla pariatur.',
+    },
+    {
+      id: 2,
+      name: 'environmental',
+      desc: 'environmental values - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla pariatur.',
+      
+    },
+    {
+      id: 4,
+      name: 'health',
+      desc: 'Health values - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla pariatur.',
+    },
+    {
+      id: 5,
+      name: 'community',
+      desc: 'Community values - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla pariatur.',
+    },
+    {
+      id: 6,
+      name: 'creativity',
+      desc: 'Creativity - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla pariatur.',
+    },
+    {
+      id: 10,
+      name: 'spirituality',
+      desc: 'Spirituality - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla pariatur.',
   }],
   projects: [
-    {
-      name: 'Make stubs',
-      desc: 'Make stubs while waiting for the backend to pull their heads out of their asses',
-      values: [4]
-    }
+      {
+        name: 'Make stubs',
+        desc: 'Make stubs while waiting for the backend',
+        time: 'Less than 1 hour',
+        values: 'community',
+      },
+      {
+        name: 'Gardening to improve home environment',
+        desc: 'My goal is to have a full-functioning garden within a year. I would like to start with growing herbs like Oregano, thyme and mint.',
+        time: 'Less than 2 hours',
+        values: 'environmental',
+      },
   ],
   topValues: {
     1: 1,

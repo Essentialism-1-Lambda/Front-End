@@ -1,8 +1,7 @@
 import React, {useState} from "react";
-import { Link } from 'react-router-dom';
+
 import { userData } from '../DataStubs/data.js';
-import { ValuesIcon } from './ValuesIcon.jpg';
-// import ProjectList from './ProjectList';
+import ValuesIcon from './ValuesIcon.jpg';
 
 
 
@@ -44,9 +43,16 @@ const useStyles = makeStyles(theme => ({
 export default function ValueCard() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [valueId, setValueId] = React.useState({
+    id: 2,
+    name: '',
+    desc: '',
+  })
 
-  const handleOpen = () => {
+  const handleOpen = (obj) => {
     setOpen(true);
+    setValueId(obj);
+    // set state to values.id
   };
 
   const handleClose = () => {
@@ -60,7 +66,7 @@ export default function ValueCard() {
         <div className="valueBtns">
           {userData.values.map( values => {
             return (
-              <Button type="button" onClick={handleOpen}>
+              <Button type="button" onClick={() => {handleOpen(values)}}>
                 {`${values.name}`}
               </Button>
             )
@@ -106,23 +112,22 @@ export default function ValueCard() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                      Value Title
-                    {/* ${userData.values} */}
+                        <h3> {`${valueId.name}`} </h3>
                   </Typography>
                   <Typography
                     variant="body2"
                     color="textSecondary"
-                    component="p"
-                  >
-                    {/* <ProjectList projects={userData.projects}> */}
-
+                    component="p" >
+                        <h4> {`${valueId.desc}`} </h4>
                   </Typography>
                 </CardContent>
               </CardActionArea>
                 <CardActions>
-
                     <Button size="small" color="primary">
                           View Dashboard
+                    </Button>
+                    <Button size="small" color="primary">
+                          View Projects
                     </Button>
                 </CardActions>
             </Card>

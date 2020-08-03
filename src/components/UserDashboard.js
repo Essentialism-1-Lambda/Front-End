@@ -5,16 +5,22 @@ import { userData } from '../DataStubs/data.js';
 
 
 import ValueCard from './ValueCard';
-// import ProjectList from './ProjectList';
-// import ProjectForm from './ProjectForm';
+import ProjectList from './ProjectList';
+import ProjectForm from './ProjectForm';
+// import EditProject from './EditProject';
 
     // api will be used to pull and render user information, or we can store it into a usercontext
     // will be a private route, along with onboarding
 
 export default function UserDashboard() {
     const [user, setUser] = useState(userData);
-    // const [project, setProject] = useState([]);
+    // const [projects, setProjects] = useState(userData);
     const [values, setValues ] = useState(userData);
+
+    // if context were active
+    // const user = useContext(UserContext);
+    // const values = useContext(ValueContext);
+    // const projects = useContext(ProjectContext);
 
     useEffect(() => {
         axiosWithAuth()
@@ -29,22 +35,35 @@ export default function UserDashboard() {
     }, [setUser, user])
 
     return (
-        <div className="dashboard-container">
-            <div className="dashboard-welcome">
-                Welcome <span><b>{`${user.name}`}</b></span>, view your values and add or delete your projects
+        <div className="dashboard-top-container">
+            <div className="dashboard-top">
+                <div className="dashboard-welcome">
+                        <h2>
+                            Welcome <span><u>{`${user.name}`}</u></span>, view your values and add or delete your projects
+                        </h2>
+                </div>
+                <div className="dashboard-values">
+                    <ValueCard
+                            values={values}
+                            userValues={user.values}
+                    />
+                </div>
             </div>
-            <div className="dashboard-values">
-                <ValueCard
-						values={values}
-                        userValues={user.values}
-                />
-            </div>
-            <div className="dashboard-projects">
-                {/* <ProjectList projects={user.projects} /> */}
 
-            </div>
-            <div className="dashboard-add-projects">
-                {/* <ProjectForm projects={user.projects} /> */}
+            <br />
+                
+            <div className="dashboard-bot">
+                <div className="dashboard-add-projects">
+                    <h3>Daily Project/Goal Reflection Below</h3>
+                    <ProjectForm 
+                        // projects={projects}
+                        userProjects={user.projects} />
+                </div>
+                <br />
+                <div className="dashboard-projects">
+                    <h3>Your Goals && Projects are Listed Below </h3>
+                    <ProjectList projects={user.projects} />
+                </div>
             </div>
 
         </div>
