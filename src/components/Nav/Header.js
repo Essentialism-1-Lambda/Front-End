@@ -35,7 +35,7 @@ export const Header = () => {
 								Dashboard
 							</Link>
 							<Link className='userlogin-link' to={'/onboarding'}>
-								Change Values
+								Value Setter
 							</Link>
 							<Link
 								className='userlogin-link'
