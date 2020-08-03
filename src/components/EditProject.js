@@ -17,9 +17,8 @@ const EditProject = props => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get(`https://essentialism-bw.herokuapp.com/api/users/${id}/projects/${project.id}`)
+      .get(`/users/${id}/projects/${project.id}`)
       .then(res => {
-        // res.data
         setItem(res.data);
       })
       .catch(err => console.log(err));
@@ -35,65 +34,63 @@ const EditProject = props => {
       ...item,
       [e.target.name]: value
     });
-  };
 
-  const formSubmit = e => {
-    e.preventDefault();
-    // make a PUT request to edit the item
-    axiosWithAuth()
-      .put(`https://essentialism-bw.herokuapp.com/api/users/${id}/projects/${project.id}`, item)
-      .then(res => {
-        // res.data
-        props.setItems(res.data);
-        push(`https://essentialism-bw.herokuapp.com/api/users/${id}/projects/${project.id}`);
-      })
-      .catch(err => console.log(err));
-  };
+    const formSubmit = e => {
+      e.preventDefault();
+      // make a PUT request to edit the item
+      axiosWithAuth()
+        .put(`/users/${id}/projects/${project.id}`, item)
+        .then(res => {
+          props.setItems(res.data);
+          push(`/users/${id}/projects/${project.id}`);
+        })
+        .catch(err => console.log(err));
+    };
 
-  return (
-    <div>
-      <form onSubmit={formSubmit}>
-                <p  className='intake-header'>
-                    Edit your project. 
-                </p>
-                <div className='form-style'>
-                    <label htmlFor='name' className='projectName'>
-                        <input 
-                            type='text' 
-                            name='name' 
-                            id='name'
-                            placeholder='Project Name'
-                            value={formState.project}
-                            onChange={inputChange} 
-                        />
-                    </label>
-                        {errorState.project.length > 0 ? (
-                        <p className='error'>{errorState.project}</p>
-                        ) : null}
-                    <label htmlFor='desc' className='descText'>
-                        Describe the project you're working on:
-                        <textarea 
-                            name='desc' 
-                            id='desc' 
-                            placeholder='Describe'
-                            value={formState.desc}
-                            onChange={inputChange} 
-                        />
-                    </label>
-                    <label htmlFor='time' className='timeDropdown'>
-                        <select value={formState.time} onChange={inputChange}>
-                            <option value="thirty">Less than 30 min</option>
-                            <option value="oneHour">Less than 1 hr</option>
-                            <option value="twoHours">less than 2 hrs</option>
-                            <option value="fourHours">More than 4 hrs</option>
-                        </select>
-                    </label>
-                </div>
-                
-                <button disabled={buttonDisabled}>Save Project</button>
-            </form>
-    </div>
-  );
+    return (
+      <div>
+        <form onSubmit={formSubmit}>
+                  <p  className='intake-header'>
+                      Edit your project. 
+                  </p>
+                  <div className='form-style'>
+                      <label htmlFor='name'>
+                          <input 
+                              type='text' 
+                              name='name' 
+                              id='name'
+                              placeholder='Project Name'
+                              value={formState.name}
+                              onChange={inputChange} 
+                          />
+                      </label>
+                          {errorState.name.length > 0 ? (
+                          <p className='error'>{errorState.name}</p>
+                          ) : null}
+                      <label htmlFor='desc' className='descText'>
+                          Describe the project you're working on:
+                          <textarea 
+                              name='desc' 
+                              id='desc' 
+                              placeholder='Describe'
+                              value={formState.desc}
+                              onChange={inputChange} 
+                          />
+                      </label>
+                      <label htmlFor='time' className='timeDropdown'>
+                          <select value={formState.time} onChange={inputChange}>
+                              <option value="thirty">Less than 30 min</option>
+                              <option value="oneHour">Less than 1 hr</option>
+                              <option value="twoHours">less than 2 hrs</option>
+                              <option value="fourHours">More than 4 hrs</option>
+                          </select>
+                      </label>
+                  </div>
+                  
+                  <button disabled={buttonDisabled}>Save Project Form</button>
+              </form>
+      </div>
+    );
 };
 
 export default EditProject;

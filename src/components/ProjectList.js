@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+// import React, { useContext, useState, useEffect } from "react";
+import React, { useState } from 'react';
 // import { axiosWithAuth } from '../utils/AxiosWithAuth';
-import { userData, projectExample } from '../DataStubs/data';
+import { userData } from '../DataStubs/data';
 import "../index.css";
+
 
 // if context were used vs dummy data
 
@@ -10,6 +12,8 @@ import "../index.css";
 // import { UserContext } from '../Context/UserContext';
     
 // const ProjConsumer = ProjContext.Consumer;
+// const {values, handleValueChange, setUser} = useContext(ProjectContext);
+
 
     // Users
     // GET /api/users
@@ -31,24 +35,16 @@ import "../index.css";
 
 
 
-const ProjectList = () => {
-    const { push } = useHistory();
-    const [listState, setListState] = useState(userData);
-    const [user, setUser] = useState(userData);
-
-
-    const deleteProject = e => {
-        e.preventDefault();
-        // axiosWithAuth()
-        //   .delete(`users/${id}/projects/${project.id}`)
-        //     .then(response => {
-        //         console.log('deleted project', response);
-        //         setListState(listState.filter(item => `${userData.projects.name}` !== userData.projects.name));
-        //         push("/Projects")
-        //     })
-        //     .catch(err => console.log(err));
-      };
-
+export default function ProjectList(userData) {
+    // const history = useHistory();
+    // const {user} = useContext(UserContext);
+    
+    // const [listState] = useState({
+    //   name: '',
+    //   desc: '',
+    //   time: '',
+    //   values: '',
+    // });
 
     // useEffect(() => {
     //     axiosWithAuth()
@@ -61,40 +57,46 @@ const ProjectList = () => {
     //     .catch(err => console.log(err));
     // }, [])
 
+    // const deleteProject = e => {
+    //     e.preventDefault();
+    //     axiosWithAuth()
+    //       .delete(`users/${id}/projects/${project.id}`)
+    //         .then(response => {
+    //             console.log('deleted project', response);
+    //             setListState(listState.filter(item => `${userData.projects.name}` !== userData.projects.name));
+    //             push("/Projects")
+    //         })
+    //         .catch(err => console.log(err));
+    //   };
 
     return(
-        <div className="projectListDiv">
+        <div className="project-list-div">
           
-            <h2>Your Projects</h2>
-            <div className="projectContainer">
-                {
-                    listState.map((project, i) => {
-                        return(
-
-                          <div key={userData.projects.id} className='projects'>
-                            <p>Project: {userData.projects.name}</p>
-                            <p>desc: {userData.projects.desc}</p>
-                            <p>time: {userData.projects.time}</p>
-                            <p>values: {userData.projects.values}</p>
-                            
-
-                              <button className="delete-btn" onClick={deleteProject}>
-                                Delete
-                              </button>
-            
-                              {/* <button
-                                  className="edit-btn" 
-                                  onClick={() => push(`https://essentialism-bw.herokuapp.com/api/user/${id}/projects/${project.id}`)}>
-                                    Edit
-                              
-                              </button> */}
-
-                          </div>
-                        );
-                     })
+            <div className="project-container">
+                {userData.projects.map( projects => {
+                    return(
+                      <div key={userData.projects.id} className='projects'>
+                        <p>----------------------------------</p>
+                        <p>Project: {userData.projects.name}</p>
+                        <p>desc: {userData.projects.desc}</p>
+                        <p>time: {userData.projects.time}</p>
+                        <p>values: {userData.projects.values}</p>
+                          <button className="delete-btn">
+                            Delete
+                          </button>
+                      </div>
+                    );
+                  })
                 }
             </div>  
         </div>
     );
 };
-export default ProjectList;
+
+        //  {/* <button className="delete-btn" onClick={deleteProject}> */}
+        //                   {/* <button
+        //                       className="edit-btn" 
+        //                       onClick={() => push(`https://essentialism-bw.herokuapp.com/api/user/${id}/projects/${project.id}`)}>
+        //                         Edit
+                          
+        //                   </button> */}

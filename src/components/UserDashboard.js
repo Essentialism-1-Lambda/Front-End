@@ -5,7 +5,7 @@ import { userData } from '../DataStubs/data.js';
 
 
 import ValueCard from './ValueCard';
-// import ProjectList from './ProjectList';
+import ProjectList from './ProjectList';
 // import ProjectForm from './ProjectForm';
 // import EditProject from './EditProject';
 
@@ -61,8 +61,8 @@ export default function UserDashboard() {
                 </div>
                 <br />
                 <div className="dashboard-projects">
-                    <h3>Project list here</h3>
-                    {/* <ProjectList projects={user.projects} /> */}
+                    <h2>Your Projects are Listed Below </h2>
+                    <ProjectList projects={user.projects} />
                 </div>
             </div>
 

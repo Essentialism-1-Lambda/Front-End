@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 // import { axiosWithAuth } from '../../utils/AxiosWithAuth';
 
-import { EditProject } from './EditProject';
+// import { EditProject } from './EditProject';
 
 
 
 const formSchema = yup.object().shape({
     name: yup.string().required('Project name is a required field.').min(2, 'That is not a project name.'),
-    desc: yup.string()
+    desc: yup.string(),
     time: yup.string(),
     values: yup.string(),
   });
@@ -130,7 +130,7 @@ const Projects = () => {
                 <pre>{JSON.stringify(post, null, 2)}</pre>
 
                 <button disabled={buttonDisabled}>Add Project</button>
-                <button onClick={EditProject}>Edit Project</button>
+                {/* <button onClick={EditProject}>Edit Project</button> */}
             </form>
     </div>
   )
