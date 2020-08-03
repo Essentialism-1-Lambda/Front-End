@@ -80,7 +80,7 @@ export default function ProjectList(userData) {
                         <p>Project: {userData.projects.name}</p>
                         <p>desc: {userData.projects.desc}</p>
                         <p>time: {userData.projects.time}</p>
-                        <p>values: {userData.projects.values}</p>
+                        <p>value: {userData.projects.values}</p>
                           <button className="delete-proj-btn">
                             Delete
                           </button>

@@ -128,7 +128,7 @@ const Projects = () => {
                         </select>
                     </label>
                     <label htmlFor='value-option' className='value-option'>
-                      Time spent on this project daily:
+                      The value this project aligns with most:
                         <select value={formState.values} onChange={inputChange}>
                             <option value="family">Family</option>
                             <option value="health">Health</option>
