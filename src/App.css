@@ -193,25 +193,11 @@ input#family {
 }
 
 
-  
-.dashboard-container {
-  display: flex;
-  justify-content: center;
-  font-family: 'Montserrat';
-  margin-top: 40px;
-  width: 100%;
-  padding: 20px;
-}
-
 .dashboard-top{
-  /* position:relative; */
   display: flex;
+  font-family: 'Montserrat';
   justify-content: space-between;
   flex-direction: row;
-  /* /* flex-direction: row; */
-  /* flex-wrap: wrap; */
-  /* justify-content: center;
-  margin-top: auto; */
   width: 100%;
   height: 100%;
   padding: 50px;
