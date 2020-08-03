@@ -88,9 +88,16 @@ export const userData = {
   projects: [
       {
         name: 'Make stubs',
-        desc: 'Make stubs while waiting for the backend to pull their heads out of their asses',
-        values: [4]
-      }
+        desc: 'Make stubs while waiting for the backend',
+        time: 1,
+        values: 'community',
+      },
+      {
+        name: 'Gardening to improve home environment',
+        desc: 'My goal is to have a full-functioning garden within a year. I would like to start with growing herbs like Oregano, thyme and mint.',
+        time: 2,
+        values: 'environmental',
+      },
   ],
   topValues: {
     1: 1,
@@ -111,13 +118,3 @@ export const onboardedUserStub = {
     3: 6
   }
 };
-
-export const projectExample = [
-  {
-    id: Date.now,
-    name: 'Gardening to improve home environment',
-    desc: 'My goal is to have a full-functioning garden within a year. I would like to start with growing herbs like Oregano, thyme and mint.',
-    time: 2,
-    values: 2,
-  }
-]

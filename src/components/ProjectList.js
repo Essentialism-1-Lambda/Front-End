@@ -73,11 +73,10 @@ export default function ProjectList() {
 
     return(
         <div className="project-list-div">
-          
             <div className="project-container">
                 {project.map( (project, i) => {
                     return(
-                      <div className='project' key={project.id}>
+                      <div className='project' key={i}>
                         <p>----------------------------------</p>
                         <p>Project: {project.name}</p>
                         <p>desc: {project.desc}</p>
@@ -85,7 +84,7 @@ export default function ProjectList() {
                         <p>value: {project.values}</p>
                           <button className="delete-proj-btn">
                           {/* <button className="delete-prop-btn" onClick={() => deleteProject(project)}> */}
-                            Delete Project
+                            Delete
                           </button>
                       </div>
                     );
