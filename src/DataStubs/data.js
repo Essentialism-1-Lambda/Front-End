@@ -89,7 +89,7 @@ export const userData = {
       {
         name: 'Make stubs',
         desc: 'Make stubs while waiting for the backend',
-        time: 1,
+        time: '1',
         values: 'community',
       },
       {

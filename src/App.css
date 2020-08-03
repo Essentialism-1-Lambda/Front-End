@@ -233,7 +233,11 @@ input#family {
   /* padding: 10px; */
 }
 
-
+.project-list-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .dashboard-add-projects {
   border: 3px solid lightgray;
@@ -282,9 +286,11 @@ input#family {
 }
 
 .delete-proj-btn {
-  width: 225px;
-    padding: 10px 15px;
-    font-size: 1.2rem;
+    width: 125px;
+    height: 40px;
+    margin: auto;
+    padding: 5px 5px;
+    font-size: 0.6rem;
     text-transform: uppercase;
     border: 0;
     border-radius: 5px;
