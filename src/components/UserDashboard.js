@@ -7,6 +7,7 @@ import { userData } from '../DataStubs/data.js';
 import ValueCard from './ValueCard';
 // import ProjectList from './ProjectList';
 // import ProjectForm from './ProjectForm';
+// import EditProject from './EditProject';
 
     // api will be used to pull and render user information, or we can store it into a usercontext
     // will be a private route, along with onboarding
@@ -19,6 +20,7 @@ export default function UserDashboard() {
     // if context were active
     // const user = useContext(UserContext);
     // const values = useContext(ValueContext);
+    // const projects = useContext(ProjectContext);
 
     useEffect(() => {
         axiosWithAuth()
