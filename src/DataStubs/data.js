@@ -114,6 +114,7 @@ export const onboardedUserStub = {
 
 export const projectExample = [
   {
+    id: Date.now,
     name: 'Gardening to improve home environment',
     desc: 'My goal is to have a full-functioning garden within a year. I would like to start with growing herbs like Oregano, thyme and mint.',
     time: 2,

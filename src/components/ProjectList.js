@@ -35,10 +35,12 @@ import "../index.css";
 
 
 
-export default function ProjectList(userData) {
+export default function ProjectList() {
     // const history = useHistory();
     // const {user} = useContext(UserContext);
-    
+    const [project] = useState(userData.projects);
+
+
     // const [listState] = useState({
     //   name: '',
     //   desc: '',
@@ -73,16 +75,17 @@ export default function ProjectList(userData) {
         <div className="project-list-div">
           
             <div className="project-container">
-                {userData.projects.map( projects => {
+                {project.map( (project, i) => {
                     return(
-                      <div key={userData.projects.id} className='projects'>
+                      <div className='project' key={project.id}>
                         <p>----------------------------------</p>
-                        <p>Project: {userData.projects.name}</p>
-                        <p>desc: {userData.projects.desc}</p>
-                        <p>time: {userData.projects.time}</p>
-                        <p>value: {userData.projects.values}</p>
+                        <p>Project: {project.name}</p>
+                        <p>desc: {project.desc}</p>
+                        <p>time: {project.time}</p>
+                        <p>value: {project.values}</p>
                           <button className="delete-proj-btn">
-                            Delete
+                          {/* <button className="delete-prop-btn" onClick={() => deleteProject(project)}> */}
+                            Delete Project
                           </button>
                       </div>
                     );
@@ -93,7 +96,6 @@ export default function ProjectList(userData) {
     );
 };
 
-        //  {/* <button className="delete-btn" onClick={deleteProject}> */}
         //                   {/* <button
         //                       className="edit-btn" 
         //                       onClick={() => push(`https://essentialism-bw.herokuapp.com/api/user/${id}/projects/${project.id}`)}>
