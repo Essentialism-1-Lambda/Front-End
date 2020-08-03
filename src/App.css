@@ -218,6 +218,7 @@ input#family {
 .dashboard-bot{
   display: flex;
   justify-content: space-between;
+  font-family: 'Montserrat';
   flex-direction: row;
   /* /* flex-direction: row; */
   /* flex-wrap: wrap; */
