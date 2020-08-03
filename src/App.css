@@ -226,11 +226,11 @@ input#family {
   flex-direction: row;
   /* /* flex-direction: row; */
   /* flex-wrap: wrap; */
-  /* justify-content: center;
-  margin-top: auto; */
-  width: 100%;
+  /* justify-content: center; */
+  margin: auto; 
+  width: 90%;
   height: 100%;
-  padding: 50px;
+  /* padding: 10px; */
 }
 
 
