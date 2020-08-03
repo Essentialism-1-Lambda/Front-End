@@ -127,8 +127,19 @@ const Projects = () => {
                             <option value="fourHours">More than 4 hrs</option>
                         </select>
                     </label>
+                    <label htmlFor='value-option' className='value-option'>
+                      Time spent on this project daily:
+                        <select value={formState.values} onChange={inputChange}>
+                            <option value="family">Family</option>
+                            <option value="health">Health</option>
+                            <option value="creativity">Creativity</option>
+                            <option value="spirituality">Spirituality</option>
+                            <option value="community">Community</option>
+                            <option value="environmental">Environmental</option>
+                        </select>
+                    </label>
                 </div>
-                <pre>{JSON.stringify(post, null, 2)}</pre>
+                {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
 
                 <button disabled={buttonDisabled} className="proj-form-btn">Add Project</button>
                 {/* <button onClick={EditProject}>Edit Project</button> */}
