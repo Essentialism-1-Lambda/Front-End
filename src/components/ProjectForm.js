@@ -3,6 +3,7 @@ import * as yup from 'yup';
 // import { axiosWithAuth } from '../../utils/AxiosWithAuth';
 
 // import { EditProject } from './EditProject';
+// import { EditForm } from './EditForm';
 
 
 
@@ -62,7 +63,7 @@ const Projects = () => {
     e.persist();
     validateChange(e);
     let value =
-        e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        e.target.type === 'dropdown' ? e.target.dropdown : e.target.value;
     setFormState({ ...formState, [e.target.name]: value });
   };
 
@@ -97,11 +98,11 @@ const Projects = () => {
     <div className='project-body'>
         <form onSubmit={formSubmit}>
                 <p  className='intake-header'>
-                    Record your projects.
+                    Record && Reflect
                 </p>
                 <div className='project-form-div'>
                     <label htmlFor='name'>
-                      Project name:
+                      Project or Goal name:
                         <input
                             type='text'
                             name='name'
@@ -115,7 +116,7 @@ const Projects = () => {
                         <p className='error'>{errorState.name}</p>
                         ) : null}
                     <label htmlFor='desc' className='descText'>
-                        Describe the project you're working on and record your reflections:
+                        Describe the project or goal you're working on and record your thoughts:
                         <textarea
                             name='desc'
                             id='desc'
@@ -125,7 +126,7 @@ const Projects = () => {
                         />
                     </label>
                     <label htmlFor='time' className='timeDropdown'>
-                      Time spent on this project daily:
+                      How much time do you want to spend on this project daily?
                         <select value={formState.time} onChange={inputChange}>
                             <option value="">-Please Select One-</option>
                             <option value="1">Less than 30 min</option>
@@ -135,7 +136,7 @@ const Projects = () => {
                         </select>
                     </label>
                     <label htmlFor='value-option' className='value-option'>
-                      The value this project aligns with most:
+                      Which of your values does this align with most?
                         <select value={formState.values} onChange={inputChange}>
                             <option value="">-Please Select One-</option>
                             <option value="family">Family</option>
@@ -149,7 +150,7 @@ const Projects = () => {
                 </div>
                 {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
 
-                <button disabled={buttonDisabled} className="proj-form-btn">Add Project</button>
+                <button disabled={buttonDisabled} className="proj-form-btn" type="submit">Add Project</button>
                 {/* <button onClick={EditProject}>Edit Project</button> */}
             </form>
     </div>

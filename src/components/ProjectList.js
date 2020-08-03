@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { userData } from '../DataStubs/data';
 import "../index.css";
 
+// import EditForm from './EditForm';
+
 
 // if context were used vs dummy data
 // import React, { UseContext } from 'react';
@@ -17,6 +19,7 @@ import "../index.css";
 export default function ProjectList() {
     // const history = useHistory();
     // const {user} = useContext(UserContext);
+    // const {projects} = useContext(ProjectContext);
     
     // const [list, setListState] = useState([]);
 
@@ -30,6 +33,8 @@ export default function ProjectList() {
     //         })
     //         .catch(err => console.log(err));
     // };
+
+    // can two api calls be in the same component like this?
 
     // useEffect(() => {
     //     axiosWithAuth()
@@ -59,6 +64,7 @@ export default function ProjectList() {
                           {/* <button className="delete-prop-btn" onClick={() => deleteProject(project)}> */}
                             Delete
                           </button>
+                          {/* <button onClick={()=>{EditForm}}>Edit</button> */}
                       </div>
                     );
                   })
