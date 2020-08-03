@@ -19,7 +19,7 @@ export default function ProjectList() {
     // const {user} = useContext(UserContext);
     
     // const [list, setListState] = useState([]);
-    const [project] = useState(userData.projects);
+    const [projectList] = useState(userData.projects);
 
     // const deleteProject = project => {
     //     axiosWithAuth()
@@ -47,14 +47,15 @@ export default function ProjectList() {
     return(
         <div className="project-list-div">
             <div className="project-container">
-                {project.map( (project, i) => {
+                {
+                  projectList.map( (project, i) => {
                     return(
                       <div className='project' key={i}>
                         <p>-------------------------------------------------</p>
-                        <p>Project: {project.name}</p>
-                        <p>desc: {project.desc}</p>
-                        <p>time: {project.time}</p>
-                        <p>value: {project.values}</p>
+                        <p>Project: {projectList.name}</p>
+                        <p>desc: {projectList.desc}</p>
+                        <p>time: {projectList.time}</p>
+                        <p>value: {projectList.values}</p>
                           <button className="delete-proj-btn">
                           {/* <button className="delete-prop-btn" onClick={() => deleteProject(project)}> */}
                             Delete
